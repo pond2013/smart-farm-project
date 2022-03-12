@@ -1,0 +1,6 @@
+@import "styles/valiables";
+
+.form-control:disabled {
+  opacity: 0.7;
+  color: $text-disabled;
+}

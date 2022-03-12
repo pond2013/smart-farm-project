@@ -1,0 +1,73 @@
+$img-path: '../assets/img';
+
+
+i.icon-doc {
+  content: url('#{$img-path}/doc.svg');
+  background-repeat: no-repeat;
+  width: 35px;
+}
+
+i.icon-bank {
+  content: url('#{$img-path}/bank.svg');
+  background-repeat: no-repeat;
+  width: 55px;
+}
+
+i.icon-expo {
+  content: url('#{$img-path}/expo.svg');
+  background-repeat: no-repeat;
+  width: 45px;
+}
+
+i.icon-agree {
+  content: url('#{$img-path}/agree.svg');
+  background-repeat: no-repeat;
+  width: 55px;
+}
+
+i.icon-check {
+  content: url('#{$img-path}/check.svg');
+  background-repeat: no-repeat;
+  width: 40px;
+}
+
+i.icon-home {
+  content: url('#{$img-path}/home.svg');
+  background-repeat: no-repeat;
+  width: 40px;
+}
+i.icon-payment-bank{
+  content: url('#{$img-path}/payment-bank.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-payment-office{
+  content: url('#{$img-path}/payment-office.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-payment-other{
+  content: url('#{$img-path}/payment-other.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-cash{
+  content: url('#{$img-path}/cash.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-bank-confirm{
+  content: url('#{$img-path}/bank-confirm.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-ebank-confirm{
+  content: url('#{$img-path}/ebank-confirm.svg');
+  background-repeat: no-repeat;
+  width: 30px;
+}
+i.icon-cancel{
+  content: url('#{$img-path}/cancel.svg');
+  background-repeat: no-repeat;
+  width: 60px;
+}

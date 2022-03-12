@@ -1,0 +1,27 @@
+.menu-box {
+    height: 76px;
+    background: #eff1f3;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 12px;
+    min-width: 200px !important;
+    transition: transform 0.2s;
+    color: black;
+  
+    &:hover {
+      transform: scale(1.0125);
+    }
+  
+    .icon-block {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: 55px;
+      margin-right: 1rem;
+    }
+  }
+  
+  .other-que {
+    font-size: 14px;
+  }

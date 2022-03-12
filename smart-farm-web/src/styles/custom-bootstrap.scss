@@ -1,0 +1,11 @@
+
+@import './valiables';
+
+$theme-colors: (
+  'primary': $purple,
+  'purple': $purple
+);
+
+
+@import '../../node_modules/bootstrap/scss/bootstrap';
+  
