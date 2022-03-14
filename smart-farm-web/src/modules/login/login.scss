@@ -1,0 +1,76 @@
+
+.card{
+    text-align: center;
+    margin-left: 150px;
+    margin-top: 34px;
+    width: 1371px;
+    height: 816px;
+    background-color: #F8F8FF;
+    border-radius: 20px;
+    
+}
+
+.card h1{
+    text-align: center;
+    color: #000000;
+    font-size: 54px;
+}
+
+.card input[type="password"],
+.card input[type="text"]{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.card input[type="submit"]{
+    width: 100%;
+    padding: 15px;
+    background-color: #2F4858;
+    font-size: 25px;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #F8F8FF;
+    border-radius: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 30px;
+}
+.card form{
+    float: right;
+    margin-right: 35px;
+    margin-top: 150px;
+    
+}
+
+.card-left {
+    
+    width: 535px;
+    height: 816px;
+    background-color: #95B1AF;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    float: left;
+    
+}
+.card-left img{
+    margin-top: 200px;
+    width: 300px;
+    height: 300px;
+}
+
+.card-left p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 45px;
+    color: #F8F8FF;
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+.image{
+    width: 100px;
+    height: 100px;
+}

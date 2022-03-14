@@ -7,7 +7,7 @@ const menu = [
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่2',
+      title: 'Login',
       icon: 'icon-bank',
       path: '/login',
       value: 'menu2',
@@ -17,6 +17,13 @@ const menu = [
       title: 'ตัวเลือกที่3',
       icon: 'icon-expo',
       path: '/login',
+      value: 'menu3',
+      isShow: true,
+    },
+    {
+      title: 'ตัวเลือกที่4',
+      icon: 'icon-expo',
+      path: '/test',
       value: 'menu3',
       isShow: true,
     },
