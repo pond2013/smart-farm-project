@@ -14,9 +14,9 @@ const menu = [
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่3',
+      title: 'Register',
       icon: 'icon-expo',
-      path: '/login',
+      path: '/register',
       value: 'menu3',
       isShow: true,
     },
@@ -24,8 +24,10 @@ const menu = [
       title: 'ตัวเลือกที่4',
       icon: 'icon-expo',
       path: '/test',
-      value: 'menu3',
+      value: 'menu4',
       isShow: true,
     },
+    
+
   ];
   export default menu;
