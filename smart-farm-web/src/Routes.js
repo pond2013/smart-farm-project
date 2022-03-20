@@ -2,6 +2,8 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from './modules/home/home';
 import Login from './modules/login/login';
+import Register from './modules/register/register';
+import Test from './modules/test/test';
 
 const routes = [
   {
@@ -12,6 +14,16 @@ const routes = [
   {
     path: '/login',
     component: Login,
+    exact: true
+  },
+  {
+    path: '/register',
+    component: Register,
+    exact: true
+  },
+  {
+    path: '/test',
+    component: Test,
     exact: true
   },
 ];

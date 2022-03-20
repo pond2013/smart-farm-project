@@ -7,18 +7,27 @@ const menu = [
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่2',
+      title: 'Login',
       icon: 'icon-bank',
       path: '/login',
       value: 'menu2',
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่3',
+      title: 'Register',
       icon: 'icon-expo',
-      path: '/login',
+      path: '/register',
       value: 'menu3',
       isShow: true,
     },
+    {
+      title: 'ตัวเลือกที่4',
+      icon: 'icon-expo',
+      path: '/test',
+      value: 'menu4',
+      isShow: true,
+    },
+    
+
   ];
   export default menu;
