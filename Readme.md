@@ -23,6 +23,6 @@ dotnet run
 [urls](https://www.figma.com/file/7Y2qfgKufuit1nJjDh6YL6/SPE?node-id=0%3A1)
 
 ## Docker Command
-docker build -t smart-farm-api -f Dockerfile .
-docker run  -p 8000:80 -d smart-farm-api
+docker build -t smart-farm-api -f Dockerfile . <br />
+docker run  -p 8000:80 -d smart-farm-api <br />
 http://localhost:8000/api/sample/
