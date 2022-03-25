@@ -12,7 +12,6 @@ export default function SidebarLayout() {
 
   return (
     <>
-      {console.log(window.location.pathname)}
       {isLogin ? (
         <Content />
       ) : (

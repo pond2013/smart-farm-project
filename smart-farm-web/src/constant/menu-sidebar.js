@@ -7,7 +7,7 @@ const menuSidebar = [
       pageName:'home'
     },
     {
-      title: 'ตั้งค่าอุณหภูมิ',
+      title: 'หน้าล็อคอิน',
       icon: <RiCalendarEventLine />,
       path: '/login',
       pageName:'login'
