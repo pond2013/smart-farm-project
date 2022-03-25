@@ -1,0 +1,33 @@
+@import '../../../styles/valiables.scss';
+
+.bg-sidebar {
+  background: linear-gradient(355deg, $white 0.62%, #d8a6e0 99.79%), $purple;
+}
+
+.sidebar {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh;
+  z-index: 100;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+
+  .nav-link {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .nav-link.active {
+    color: white;
+    background-color: $purple;
+    border-radius: 10px;
+  }
+}
+
+.nav {
+  display: block;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
