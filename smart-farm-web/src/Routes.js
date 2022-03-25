@@ -2,8 +2,9 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from './modules/home/home';
 import Login from './modules/login/login';
+import Main from './modules/main/main';
 import Register from './modules/register/register';
-import Test from './modules/test/test';
+
 
 const routes = [
   {
@@ -22,8 +23,8 @@ const routes = [
     exact: true
   },
   {
-    path: '/test',
-    component: Test,
+    path: '/main',
+    component: Main,
     exact: true
   },
 ];

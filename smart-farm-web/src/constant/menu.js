@@ -21,9 +21,9 @@ const menu = [
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่4',
+      title: 'Main',
       icon: 'icon-expo',
-      path: '/test',
+      path: '/main',
       value: 'menu4',
       isShow: true,
     },

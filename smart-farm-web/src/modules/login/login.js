@@ -1,9 +1,20 @@
 import React from 'react';
 import './login.scss';
 import logo from '../../assets/img/kkm.png';
+import { useHistory } from 'react-router-dom';
 
 
 function Login() {
+    let history = useHistory();
+    function loginClick(){    
+        history.push("/main")
+    }
+    function registerClick(){    
+        history.push("/register")
+        alert("หมอลำ");
+    }
+
+    
     return(
         <>
         
@@ -19,8 +30,8 @@ function Login() {
                 <h1>Login</h1>
                 <input type="text" id="username" name="username" placeholder="Username"></input>
                 <input type="password" id="password" name="password" placeholder="Password"></input>
-                <input type="submit" value="Login"></input>
-                <a href="">Create Account </a>
+                <input type="submit" value="LOGIN" onClick={loginClick}></input>
+                <a href='#' onClick={registerClick}>Create Account</a>
             </form>
                 
             </div>
@@ -32,6 +43,9 @@ function Login() {
         </>
         
     );
+    
 }
+
+
 
 export default Login;
