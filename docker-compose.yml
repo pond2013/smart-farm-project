@@ -1,6 +1,6 @@
 version: '3.0'
 
-services:    
+services:
   smart-farm-web:
     build:
       context: ./smart-farm-web/
