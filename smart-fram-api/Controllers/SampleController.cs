@@ -8,21 +8,21 @@ namespace smart_fram_api.Controllers
         public SampleController() { }
 
         // GET api/sample
-        [HttpGet("")]
-        public ActionResult<IEnumerable<String>> Gets()
+        [HttpGet("SomethingsNice")]
+        public ActionResult<string> GetSomethingsNice()
         {
-            return new string[] { "value1", "value2" };
+            string url = "https://www.pixiv.net/en/artworks/97128267";
+            return url;
         }
 
         // GET api/sample/{id}
-        [HttpGet("{id}")]
-        public ActionResult<String> GetById(int id)
+        [HttpGet("giverandomnumber")]
+        public ActionResult<int> GetById(int start, int end)
         {
-            return "value" + id;
+            int random = Random.Shared.Next(start, end);
+            return random;
         }
 
-        // POST api/sample
-        [HttpPost("")]
-        public void Post([FromBody] string value) { }
+
     }
 }
