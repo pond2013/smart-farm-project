@@ -16,7 +16,6 @@ function Register() {
     }
     return(
         <>
-        
         <div class="card">
             <Row>
                 <Col xs={6}>
