@@ -1,7 +1,7 @@
 @import '../../../styles/valiables.scss';
 
 .bg-sidebar {
-  background: linear-gradient(355deg, $white 0.62%, #d8a6e0 99.79%), $purple;
+  background-color: #2F4858;
 }
 
 .sidebar {
@@ -15,6 +15,7 @@
 
   .nav-link {
     padding: 0.5rem 0.7rem;
+    color: white;
   }
 
   .nav-link.active {

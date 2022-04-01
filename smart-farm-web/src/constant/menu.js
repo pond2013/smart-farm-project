@@ -21,10 +21,24 @@ const menu = [
       isShow: true,
     },
     {
-      title: 'ตัวเลือกที่4',
+      title: 'Main',
       icon: 'icon-expo',
-      path: '/test',
+      path: '/main',
       value: 'menu4',
+      isShow: true,
+    },
+    {
+      title: 'Temperature',
+      icon: 'icon-expo',
+      path: '/temp',
+      value: 'menu5',
+      isShow: true,
+    },
+    {
+      title: 'Time',
+      icon: 'icon-expo',
+      path: '/time',
+      value: 'menu6',
       isShow: true,
     },
     

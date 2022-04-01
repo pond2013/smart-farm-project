@@ -1,10 +1,11 @@
 import './sidebar.scss';
-import { useHistory } from 'react-router-dom';
+import React, { useState} from 'react'
+import { useHistory, withRouter } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import menuSidebar from '../../../constant/menu-sidebar';
 
-export default function Sidebar(props) {
+function Sidebar() {
   const history = useHistory();
   const pathname = history.location.pathname;
   const menu = menuSidebar
@@ -28,3 +29,5 @@ export default function Sidebar(props) {
     </Nav>
   );
 }
+
+export default withRouter(Sidebar)
