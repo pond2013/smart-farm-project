@@ -4,8 +4,7 @@
 
 }
 .card-top{
-    margin-left: 200px;
-    margin-top: 120px;
+    
     width: 90%;
     height: 30%;
     background-color: #006C60;
@@ -17,14 +16,14 @@
     
     background-image: url("../../assets/img/5.jpg");
     background-size: cover;
+    background-color: #E5E5E5;
     display: flex;
     width: 100%;
-    height: 867px;
+    height: 850px;
 }
 
 .card-relay {
-    margin-top: 20px;
-    margin-left: 80px;
+    
     width: 200px;
     height: 210px;
     background-color: #F8F8F8;
@@ -34,27 +33,23 @@
 }
 
 .card-buttom{
-    margin-left: 200px;
-    margin-top: 70px;
+    
     width: 90%;
     height: 40%;
     background-color: #FFC2BE;
     border-radius: 10px;
-    display: block;
+    
 }
 
 .text-switch {
     
-    padding-top: 40px;
-    margin-top: 10px;
-    margin-left: 70px;
+    margin-left: 50px;
     width: 100%
 
 }
 
 .card-relay-buttom{
-    margin-top: 20px;
-    margin-left: 80px;
+    
     width: 200px;
     height: 210px;
     background-color: #F8F8F8;
