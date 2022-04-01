@@ -6,7 +6,6 @@ import img from '../../assets/img/11.jpg';
 function Register() {
     return(
         <>
-        
         <div class="card">
            
             <div class="card-left"> 

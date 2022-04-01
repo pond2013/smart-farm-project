@@ -1,4 +1,4 @@
-import { RiHome8Line, RiCalendarEventLine, RiCalendarCheckLine,RiHandCoinLine } from 'react-icons/ri';
+import { RiHome8Line, RiSettings5Line, RiLineChartLine, RiToolsLine} from 'react-icons/ri';
 const menuSidebar = [
     {
       title: 'หน้าหลัก',
@@ -7,10 +7,40 @@ const menuSidebar = [
       pageName:'home'
     },
     {
-      title: 'หน้าล็อคอิน',
-      icon: <RiCalendarEventLine />,
-      path: '/login',
-      pageName:'login'
+      title: 'ตั้งค่าเวลา',
+      icon: <RiToolsLine />,
+      path: '/time',
+      pageName:'time'
+    },
+    {
+      title: 'ตั้งค่าอุณหภูมิ',
+      icon: <RiToolsLine />,
+      path: '/temp',
+      pageName:'temp'
+    },
+    {
+      title: 'ตั้งค่าความชื้น',
+      icon: <RiToolsLine />,
+      path: '/humid',
+      pageName:'humid'
+    },
+    {
+      title: 'ตั้งค่าความชื้นดิน',
+      icon: <RiToolsLine />,
+      path: '/soilHumid',
+      pageName:'soilHumid'
+    },
+    {
+      title: 'กราฟและตารางข้อมูล',
+      icon: <RiLineChartLine />,
+      path: '/graph',
+      pageName:'graph'
+    },
+    {
+      title: 'ตั้งค่าระบบ',
+      icon: <RiSettings5Line />,
+      path: '/setting',
+      pageName:'setting'
     },
   ];
   export default menuSidebar;
