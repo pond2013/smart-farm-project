@@ -5,25 +5,33 @@ import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function Setting() {
-  
-
   return (
     <>
       <div
-        className="bg-temp"
+        className="bg-setting"
         style={{
           backgroundImage: `url(${bg})`,
         }}
       >
-          <Container>
-                <h2>ตั้งค่าระบบ</h2>
+        <Container className="m-5 p-5">
+          <h2 className="p-3 d-flex justify-content-center">ตั้งค่าระบบ</h2>
+          <div className="d-flex justify-content-center">
+            <div className="card-setting m-2 p-2 ">
+              <Row className='p-1 '>
                 <p>ชนิดของพืข</p>
-                <input type={Text} ></input>
+                <input type="text" placeholder="กรุณากรอกชนิดของพืช"></input>
+              </Row>
+              <Row className='p-1'>
                 <p>หมายเลขบอร์ด</p>
-                <input type={Number} ></input>
-                <input type="submit" value="Save"></input>
+                <input type="number" placeholder="192.168.1.105"></input>
+              </Row>
+            </div>
+          </div>
 
-          </Container>
+          <div className="d-flex justify-content-center m-5">
+            <input type="submit" value="บันทึก" id="savebutton" ></input>
+          </div>
+        </Container>
       </div>
     </>
   )

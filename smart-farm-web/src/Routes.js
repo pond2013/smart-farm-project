@@ -4,7 +4,8 @@ import Home from './modules/home/home';
 import Login from './modules/login/login';
 import Main from './modules/main/main';
 import Register from './modules/register/register';
-import addTemp from './modules/addtemp/addtemp';
+import addTemp from './modules/temp/addtemp/addtemp';
+import addTime from './modules/time/addtime/addtime';
 import Time from './modules/time/time';
 import Temp from './modules/temp/temp';
 import Humid from './modules/humid/humid';
@@ -44,6 +45,11 @@ const routes = [
     exact: true
   },
   {
+    path: '/addtime',
+    component: addTime,
+    exact: true
+  },
+  {
     path: '/time',
     component: Time,
     exact: true
@@ -51,16 +57,6 @@ const routes = [
   {
     path: '/setting',
     component: Setting,
-    exact: true
-  },
-  {
-    path: '/time',
-    component: Time,
-    exact: true
-  },
-  {
-    path: '/temp',
-    component: Temp,
     exact: true
   },
   {
@@ -78,11 +74,7 @@ const routes = [
     component: Graph,
     exact: true
   },
-  {
-    path: '/setting',
-    component: Setting,
-    exact: true
-  },
+  
 ];
 
 export default function Routes() {

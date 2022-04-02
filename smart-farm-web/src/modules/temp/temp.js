@@ -1,30 +1,28 @@
 import React from 'react'
 import './temp.scss'
-import bg from '../../assets/img/99.jpg'
 import Table from 'react-bootstrap/Table'
-import { useHistory } from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
+import {useEffect} from 'react'
 
 function Temp() {
   let history = new useHistory();
   function AddClick() {
-    history.push('../addtemp')
+    history.push('/addtemp')
   }
 
   return (
     <>
       <div
         className="bg-temp"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
+        
       >
-        <Container className='m-5 p-5'>
-          <Row>
-            <Col>
-              <h2 className="text-setting">ตั้งค่าอุณหภูมิ</h2>
+        <Container className='m-5 ms-5 p-5 card-temp'>
+          <Row className='m-1'>
+            <Col sm={11}>
+              <h2 className="ms-5 text-setting">ตั้งค่าอุณหภูมิ</h2>
             </Col>
-            <Col>
+            <Col sm={1}>
               <input
                 type="submit"
                 value="ADD"
@@ -34,36 +32,40 @@ function Temp() {
             </Col>
           </Row>
 
-          <Row className="card-temp">
+          <Row>
             <Table responsive="sm">
-              <thead>
+              <thead className='head-table'>
                 <tr>
-                  <th>#</th>
                   <th>อุณหภูมิ (C)</th>
                   <th>ทำงาน(นาที)</th>
                   <th>รีเลย์</th>
-                  <th> </th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="cases">
                 <tr>
-                  <td>1</td>
                   <td>25 C</td>
                   <td>40</td>
                   <td>1</td>
-                  <td>ลบ</td>
+                  <td>
+                    <a href=''>ลบ</a>
+                  </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Table cell</td>
-                  <td>Table cell</td>
-                  <td>Table cell</td>
-                </tr>
-                <tr>
+                  <td>28 C</td>
+                  <td>20</td>
                   <td>3</td>
-                  <td>Table cell</td>
-                  <td>Table cell</td>
-                  <td>Table cell</td>
+                  <td>
+                    <a href=''>ลบ</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>23 C</td>
+                  <td>50</td>
+                  <td>5</td>
+                  <td>
+                    <a href=''>ลบ</a>
+                  </td>
                 </tr>
               </tbody>
             </Table>
