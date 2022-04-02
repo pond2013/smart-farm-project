@@ -2,7 +2,7 @@ import React from 'react'
 import './setting.scss'
 import bg from '../../assets/img/14.jpg'
 import { useHistory } from 'react-router-dom'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Container } from 'react-bootstrap'
 
 function Setting() {
   return (
