@@ -26,7 +26,7 @@ function addTemp() {
             <div className="card-addtemp m-5 p-5">
               <Row className="m-2 p-2">
                 <Row className='p-1'>
-                  <p>อุณหภูมิ</p>
+                  <p>อุณหภูมิ (℃)</p>
                   <input type="number"></input>
                 </Row>
                 <Row className='p-1'>

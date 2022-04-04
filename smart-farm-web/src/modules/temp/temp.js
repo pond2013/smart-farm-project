@@ -36,7 +36,7 @@ function Temp() {
             <Table responsive="sm">
               <thead className='head-table'>
                 <tr>
-                  <th>อุณหภูมิ (C)</th>
+                  <th>อุณหภูมิ (℃)</th>
                   <th>ทำงาน(นาที)</th>
                   <th>รีเลย์</th>
                   <th></th>
@@ -44,7 +44,7 @@ function Temp() {
               </thead>
               <tbody id="cases">
                 <tr>
-                  <td>25 C</td>
+                  <td>25 ℃</td>
                   <td>40</td>
                   <td>1</td>
                   <td>
@@ -52,7 +52,7 @@ function Temp() {
                   </td>
                 </tr>
                 <tr>
-                  <td>28 C</td>
+                  <td>28 ℃</td>
                   <td>20</td>
                   <td>3</td>
                   <td>
@@ -60,7 +60,7 @@ function Temp() {
                   </td>
                 </tr>
                 <tr>
-                  <td>23 C</td>
+                  <td>23 ℃</td>
                   <td>50</td>
                   <td>5</td>
                   <td>
