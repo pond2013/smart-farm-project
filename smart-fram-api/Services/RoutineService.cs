@@ -18,7 +18,7 @@ public class RoutineService
             smartFarmDatabaseSettings.Value.DatabaseName);
 
         _usersCollection = mongoDatabase.GetCollection<Routine>(
-            smartFarmDatabaseSettings.Value.UsersCollectionName);
+            smartFarmDatabaseSettings.Value.RoutineCollectionName);
     }
 
     public async Task<List<Routine>> GetAsync() =>

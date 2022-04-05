@@ -18,7 +18,7 @@ public class SetTempService
             smartFarmDatabaseSettings.Value.DatabaseName);
 
         _usersCollection = mongoDatabase.GetCollection<SetTemp>(
-            smartFarmDatabaseSettings.Value.UsersCollectionName);
+            smartFarmDatabaseSettings.Value.SetTempCollectionName);
     }
 
     public async Task<List<SetTemp>> GetAsync() =>
