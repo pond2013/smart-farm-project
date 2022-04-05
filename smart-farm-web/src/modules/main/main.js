@@ -1,5 +1,9 @@
 import React from 'react'
 import './main.scss'
+import temp from '../../assets/img/kkm.png'
+import soihumid from '../../assets/img/13.png'
+import humid from '../../assets/img/15.jpg'
+import wind from '../../assets/img/13.jpg'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function Main() {
@@ -9,13 +13,61 @@ function Main() {
       <div class="bg">
         <Container className="d-flex flex-column justify-content-md-center">
           <div className="m-5 d-flex justify-content-around card-top">
-            <div className="m-4 p-2 col-example text-left card-relay"></div>
+            <div className="m-4 p-2 col-example card-relay">
+              <Row>
+                <div>
+                  <img className="img-logofarm" src={temp} />
+                </div>
+              </Row>
+              <Row className='m-2'>
+                <p>0 ℃</p>
+              </Row>
+              <Row>
+                <p>อุณหภูมิ</p>
+              </Row>
+            </div>
 
-            <div className="m-4 p-2 col-example text-left card-relay"></div>
+            <div className="m-4 p-2 col-example text-left card-relay">
+              <Row>
+                <div>
+                  <img className="img-logofarm" src={soihumid} />
+                </div>
+              </Row>
+              <Row className='m-2'>
+                <p>0 %</p>
+              </Row>
+              <Row>
+                <p>ความชื้นดิน</p>
+              </Row>
+            </div>
 
-            <div className="m-4 p-2 col-example text-left card-relay"></div>
+            <div className="m-4 p-2 col-example text-left card-relay">
+              <Row>
+                <div>
+                  <img className="img-logofarm" src={humid} />
+                </div>
+              </Row>
+              <Row className='m-2'>
+                <p>0 %</p>
+              </Row>
+              <Row>
+                <p>ความชื้น</p>
+              </Row>
+            </div>
 
-            <div className="m-4 p-2 col-example text-left card-relay"></div>
+            <div className="m-4 p-2 col-example text-left card-relay">
+              <Row>
+                <div>
+                  <img className="img-logofarm" src={wind} />
+                </div>
+              </Row>
+              <Row className='m-2'>
+                <p>0 m/s</p>
+              </Row>
+              <Row>
+                <p>ความเร็วลม</p>
+              </Row>
+            </div>
           </div>
           <div></div>
 

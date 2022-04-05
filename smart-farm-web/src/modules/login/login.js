@@ -38,8 +38,8 @@ function Login() {
         <div className="card">
            <Row>
              <Col xs={6}>
-                <div class="card-left"> 
-                    <img class="img-logo" src={logo} />
+                <div className="card-left"> 
+                    <img className="img-logo" src={logo} />
                     <p>SMART FARM</p>
                     
                 </div>
