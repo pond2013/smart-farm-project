@@ -1,35 +1,39 @@
 import React from 'react'
-import './addtemp.scss'
-import bg from '../../../assets/img/100.jpg'
+import './addsoil-humid.scss'
+import bg from '../../../assets/img/13.jpg'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
-function addTemp() {
+function addSoilHumid() {
   let history = new useHistory()
   function saveClickk() {
-    history.push('../temp')
+    history.push('../soilHumid')
   }
 
   return (
     <>
       <div
-        className="bg-addtemp"
+        className="bg-addsoil"
         style={{
           backgroundImage: `url(${bg})`,
         }}
       >
         <Container className="m-5 p-5">
           <h2 className="p-3 d-flex justify-content-center text-temp">
-            เพิ่มการตั้งค่าอุณหภูมิ
+            เพิ่มการตั้งค่าความชื้นดิน
           </h2>
           <div className="d-flex justify-content-center">
-            <div className="card-addtemp m-5 p-5">
+            <div className="card-addsoil m-5 p-5">
               <Row className="m-2 p-2">
                 <Row className='p-1'>
-                  <p>อุณหภูมิ (℃)</p>
-                  <input type="number" placeholder="0"></input>
+                  <p>เริ่มทำงาน</p>
+                  <input type="time"></input>
                 </Row>
-                <Row className='p-1'>
+                <Row className="p-1">
+                  <p>ความชื้น</p>
+                  <input type="number" placeholder="0-100%"></input>
+                </Row>
+                <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
                   <input type="number" placeholder="0"></input>
                 </Row>
@@ -42,7 +46,7 @@ function addTemp() {
               type="submit"
               value="บันทึก"
               onClick={saveClickk}
-              id="savebutton"
+              id="saveaddsoil"
             ></input>
           </div>
         </Container>
@@ -50,4 +54,4 @@ function addTemp() {
     </>
   )
 }
-export default addTemp
+export default addSoilHumid

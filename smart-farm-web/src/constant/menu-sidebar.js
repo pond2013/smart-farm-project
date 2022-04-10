@@ -3,8 +3,8 @@ const menuSidebar = [
     {
       title: 'หน้าหลัก',
       icon: <RiHome8Line />,
-      path: '/home',
-      pageName:'home'
+      path: '/main',
+      pageName:'main'
     },
     {
       title: 'ตั้งค่าเวลา',

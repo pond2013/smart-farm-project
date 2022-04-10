@@ -6,6 +6,8 @@ import Main from './modules/main/main';
 import Register from './modules/register/register';
 import addTemp from './modules/temp/addtemp/addtemp';
 import addTime from './modules/time/addtime/addtime';
+import addHumid from './modules/humid/addhumid/addhumid';
+import addSoilHumid from './modules/soil-humid/addsoil-humid/addsoil-humid';
 import Time from './modules/time/time';
 import Temp from './modules/temp/temp';
 import Humid from './modules/humid/humid';
@@ -72,6 +74,16 @@ const routes = [
   {
     path: '/graph',
     component: Graph,
+    exact: true
+  },
+  {
+    path: '/addhumid',
+    component: addHumid,
+    exact: true
+  },
+  {
+    path: '/addsoilHumid',
+    component: addSoilHumid,
     exact: true
   },
   

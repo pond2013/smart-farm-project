@@ -19,7 +19,7 @@ function Time() {
           backgroundImage: `url(${bg})`,
         }}
       >
-       <Container className='m-5 ms-5 p-5 card-time'>
+       <Container className='m-4 ms-4 p-4'>
           <Row className='m-1'>
             <Col sm={11}>
               <h2 className="ms-5 text-setting">ตั้งค่าเวลา</h2>
@@ -45,7 +45,7 @@ function Time() {
                   <th></th>
                 </tr>
               </thead>
-              <tbody id="cases">
+              <tbody id="cases-time">
                 <tr>
                   <td>25-2-2565</td>
                   <td>8:30 AM</td>

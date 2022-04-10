@@ -23,22 +23,16 @@
     margin-bottom: 30px;
 }
 
-.card-temp{
-    width: 80%;
-    border-radius: 20px;
-}
-
 .head-table{
-    
+    font-size: 24px;
     padding: 10px;
     background-color:#FFA8A6;
     text-align: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
 }
 
 tbody, td{
     text-align: center;
+    font-size: 20px;
 
 }
 tbody tr td a:link{
@@ -51,11 +45,11 @@ tbody tr td a:hover {
     background-color: transparent;
     text-decoration: underline;
   }
-#cases tr:nth-child(even) {
+#cases-temp tr:nth-child(even) {
     font-weight: bold;
     background-color: #F0F8FF;
 }
-#cases tr:nth-child(odd) {
+#cases-temp tr:nth-child(odd) {
     font-weight: bold;
     background-color: #F8F8F8;
 }
