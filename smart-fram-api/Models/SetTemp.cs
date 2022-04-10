@@ -8,6 +8,7 @@ public class SetTemp{
     [BsonRepresentation(BsonType.ObjectId)]
 
     public string? Id { get; set; }
+    public double? number { get; set; }
     public string? relayId { get; set; }
     
     public string? tempToStart { get; set; }
@@ -15,5 +16,6 @@ public class SetTemp{
     public string? duration { get; set; }
 
     public string? user { get; set; }
+    public date? date { get; set; }
     
 }

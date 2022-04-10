@@ -6,7 +6,7 @@ namespace smart_fram_api.Services;
 
 public class SetTimeService
 {
-    private readonly IMongoCollection<SetTime> _usersCollection;
+    private readonly IMongoCollection<SetTime> _setTimeCollection;
 
     public SetTimeService(
         IOptions<SmartFarmDatabaseSettings> smartFarmDatabaseSettings)
@@ -17,22 +17,22 @@ public class SetTimeService
         var mongoDatabase = mongoClient.GetDatabase(
             smartFarmDatabaseSettings.Value.DatabaseName);
 
-        _usersCollection = mongoDatabase.GetCollection<SetTime>(
-            smartFarmDatabaseSettings.Value.UsersCollectionName);
+        _setTimeCollection = mongoDatabase.GetCollection<SetTime>(
+            smartFarmDatabaseSettings.Value.SetTimeCollectionName);
     }
 
     public async Task<List<SetTime>> GetAsync() =>
-        await _usersCollection.Find(_ => true).ToListAsync();
+        await _setTimeCollection.Find(_ => true).ToListAsync();
 
     public async Task<SetTime?> GetAsync(string id) =>
-        await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        await _setTimeCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(SetTime newTimer) =>
-        await _usersCollection.InsertOneAsync(newTimer);
+    public async Task CreateAsync(SetTime timer) =>
+        await _setTimeCollection.InsertOneAsync(timer);
 
-    public async Task UpdateAsync(string id, SetTime updatedTimer) =>
-        await _usersCollection.ReplaceOneAsync(x => x.Id == id, updatedTimer);
+    public async Task UpdateAsync(string id, SetTime updateTimer) =>
+        await _setTimeCollection.ReplaceOneAsync(x => x.Id == id, updateTimer);
 
     public async Task RemoveAsync(string id) =>
-        await _usersCollection.DeleteOneAsync(x => x.Id == id);
+        await _setTimeCollection.DeleteOneAsync(x => x.Id == id);
 }

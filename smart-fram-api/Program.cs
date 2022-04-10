@@ -9,6 +9,9 @@ builder.Services.Configure<SmartFarmDatabaseSettings>(
     builder.Configuration.GetSection("SmartFarmDatabase"));
 builder.Services.AddSingleton<SmartFarmService>();
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<SetTempService>();
+builder.Services.AddSingleton<SetTimeService>();
+builder.Services.AddSingleton<RoutineService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
