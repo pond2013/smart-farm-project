@@ -6,6 +6,8 @@ services:
       context: ./smart-farm-web/
       dockerfile: ./Dockerfile
     container_name: smart-farm-web
+    ports:
+      - 80:80
     networks: 
       - smart-farm-network
   
