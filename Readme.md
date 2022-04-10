@@ -26,3 +26,6 @@ dotnet run
 docker build -t smart-farm-api -f Dockerfile . <br />
 docker run  -p 8000:80 -d smart-farm-api <br />
 http://localhost:8000/api/sample/
+
+## compose
+docker-compose up -d
