@@ -17,7 +17,7 @@ function Temp() {
         className="bg-temp"
         
       >
-        <Container className='m-5 ms-5 p-5 card-temp'>
+        <Container className='m-4 ms-4 p-4'>
           <Row className='m-1'>
             <Col sm={11}>
               <h2 className="ms-5 text-setting">ตั้งค่าอุณหภูมิ</h2>
@@ -42,7 +42,7 @@ function Temp() {
                   <th></th>
                 </tr>
               </thead>
-              <tbody id="cases">
+              <tbody id="cases-temp">
                 <tr>
                   <td>25 ℃</td>
                   <td>40</td>

@@ -86,7 +86,11 @@ function Main() {
             </div>
 
             <div className="d-flex justify-content-around">
-              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+                <Row>
+                  <p>รีเลย์ 1</p>
+                </Row>
+              </div>
 
               <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
 

@@ -25,16 +25,17 @@ function addTime() {
           <div className="d-flex justify-content-center">
             <div className="card-addtime m-5 p-5">
               <Row className="m-2 p-2">
-                  <Row>
+                  <Row className='p-1'>
                       <p>วัน</p>
+                      <input type="date"></input>
                   </Row>
                 <Row className='p-1'>
                   <p>เริ่มทำงาน</p>
-                  <input type="number"></input>
+                  <input type="time"></input>
                 </Row>
                 <Row className='p-1'>
                   <p>ทำงาน (นาที)</p>
-                  <input type="number"></input>
+                  <input type="number" placeholder="0"></input>
                 </Row>
               </Row>
             </div>

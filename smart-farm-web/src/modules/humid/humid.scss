@@ -1,13 +1,11 @@
-.bg-time{
-
-    background-size: cover;
-    display: flex;
-    width: 90%;
-    height: 1500px;
+.head-humdi{
+    font-size: 24px;
+    padding: 10px;
+    background-color:#FFC107;
+    text-align: center;
 }
 
-
-#add-time{
+#add-humid{
     
     width: 55px;
     height: 40px;
@@ -19,11 +17,11 @@
     float: right;
 }
 
-#cases-time tr:nth-child(even) {
+#cases-humid tr:nth-child(even) {
     font-weight: bold;
-    background-color: #F5FFFA;
+    background-color: #FFE082;
 }
-#cases-time tr:nth-child(odd) {
+#cases-humid tr:nth-child(odd) {
     font-weight: bold;
     background-color: #F8F8F8;
 }
