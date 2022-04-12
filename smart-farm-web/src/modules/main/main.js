@@ -4,10 +4,27 @@ import temp from '../../assets/img/kkm.png'
 import soihumid from '../../assets/img/13.png'
 import humid from '../../assets/img/15.jpg'
 import wind from '../../assets/img/13.jpg'
-import { Row, Col, Container } from 'react-bootstrap'
+import off from '../../assets/img/OFF.png'
+import on from '../../assets/img/ON.png'
+import { Row, Container } from 'react-bootstrap'
 
 function Main() {
-  function switchChecked() {}
+  let list = [{id:"1", state:"on"},{id:"2", state:"off"},{id:"3", state:"on"},{id:"4", state:"off"}]
+  function switchMode() {}
+  function Changeimg(){
+    console.log("change")
+  }
+  function switchClick() {
+    console.log("click")
+    const openChecked = document.getElementById("relay1");
+    if (list[0].state == "on"){
+      console.log(list[0].state)
+      openChecked.src={on}
+      
+    } else {
+      openChecked.src={off}
+    }
+  }
   return (
     <>
       <div class="bg">
@@ -19,7 +36,7 @@ function Main() {
                   <img className="img-logofarm" src={temp} />
                 </div>
               </Row>
-              <Row className='m-2'>
+              <Row className="m-2">
                 <p>0 ℃</p>
               </Row>
               <Row>
@@ -33,7 +50,7 @@ function Main() {
                   <img className="img-logofarm" src={soihumid} />
                 </div>
               </Row>
-              <Row className='m-2'>
+              <Row className="m-2">
                 <p>0 %</p>
               </Row>
               <Row>
@@ -47,7 +64,7 @@ function Main() {
                   <img className="img-logofarm" src={humid} />
                 </div>
               </Row>
-              <Row className='m-2'>
+              <Row className="m-2">
                 <p>0 %</p>
               </Row>
               <Row>
@@ -61,7 +78,7 @@ function Main() {
                   <img className="img-logofarm" src={wind} />
                 </div>
               </Row>
-              <Row className='m-2'>
+              <Row className="m-2">
                 <p>0 m/s</p>
               </Row>
               <Row>
@@ -78,7 +95,7 @@ function Main() {
                 <input
                   type="checkbox"
                   className="slider"
-                  onChange={switchChecked()}
+                  onChange={switchMode()}
                 ></input>
                 <span className="slider"></span>
               </label>
@@ -86,17 +103,44 @@ function Main() {
             </div>
 
             <div className="d-flex justify-content-around">
-              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+              <div className="m-4 p-2 col-example text-left card-relay-buttom" onClick={switchClick}>
                 <Row>
                   <p>รีเลย์ 1</p>
+                  
+                  <div className='d-flex justify-content-center'  >
+                  <img className="img-logoswitch" src={off} id='relay1' onChange={Changeimg}/>
+                  
+                  </div>
+                  
                 </Row>
               </div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+                <Row>
+                  <p>รีเลย์ 2</p>
+                  <div className='d-flex justify-content-center'>
+                    <img className="img-logoswitch"/>
+                  </div>
+                </Row>
+              </div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+              <Row>
+                  <p>รีเลย์ 3</p>
+                  <div className='d-flex justify-content-center'>
+                    <img className="img-logoswitch" src={on} />
+                  </div>
+                </Row>
+              </div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+              <Row>
+                  <p>รีเลย์ 4</p>
+                  <div className='d-flex justify-content-center'>
+                    <img className="img-logoswitch" src={on} />
+                  </div>
+                </Row>
+              </div>
             </div>
           </div>
         </Container>

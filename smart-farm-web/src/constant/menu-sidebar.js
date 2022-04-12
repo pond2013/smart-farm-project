@@ -1,4 +1,5 @@
-import { RiHome8Line, RiSettings5Line, RiLineChartLine, RiToolsLine} from 'react-icons/ri';
+import { RiHome8Line, RiSettings5Line, RiLineChartLine, RiTimeLine, RiTempHotLine, RiShowersLine, RiDropLine} from 'react-icons/ri';
+
 const menuSidebar = [
     {
       title: 'หน้าหลัก',
@@ -8,25 +9,25 @@ const menuSidebar = [
     },
     {
       title: 'ตั้งค่าเวลา',
-      icon: <RiToolsLine />,
+      icon: <RiTimeLine />,
       path: '/time',
       pageName:'time'
     },
     {
       title: 'ตั้งค่าอุณหภูมิ',
-      icon: <RiToolsLine />,
+      icon: <RiTempHotLine />,
       path: '/temp',
       pageName:'temp'
     },
     {
       title: 'ตั้งค่าความชื้น',
-      icon: <RiToolsLine />,
+      icon: <RiShowersLine />,
       path: '/humid',
       pageName:'humid'
     },
     {
       title: 'ตั้งค่าความชื้นดิน',
-      icon: <RiToolsLine />,
+      icon: <RiDropLine />,
       path: '/soilHumid',
       pageName:'soilHumid'
     },

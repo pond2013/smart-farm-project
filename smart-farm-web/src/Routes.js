@@ -14,6 +14,7 @@ import Humid from './modules/humid/humid';
 import SoilHumid from './modules/soil-humid/soil-humid'
 import Graph from './modules/graph/graph'
 import Setting from './modules/setting/setting'
+import ProfileSetting from './modules/profile-setting/profile-setting';
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
   {
     path: '/register',
     component: Register,
+    exact: true
+  },
+  {
+    path: '/profile-setting',
+    component: ProfileSetting,
     exact: true
   },
   {

@@ -19,14 +19,14 @@ function Register() {
         <div class="card">
             <Row>
                 <Col xs={6}>
-                <div class="card-left"> 
-                    <img class="img-kku" src={img} />
+                <div className="card-left"> 
+                    <img className="img-kku" src={img} />
                     
                     
                 </div>
                 </Col>
                 <Col xs={6}>
-                    <div class="card-right">
+                    <div className="card-right">
                         <form>
                             <h1>CREATE ACCOUNT</h1>
                             <input type="text" id="email" name="email" placeholder="E-mail"></input>
