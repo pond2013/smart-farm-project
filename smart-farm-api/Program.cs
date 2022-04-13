@@ -30,6 +30,14 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors(builder =>{
+    builder.AllowAnyHeader();
+    builder.AllowAnyMethod();
+    builder.AllowAnyOrigin();
+});
+
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
