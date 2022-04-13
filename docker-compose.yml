@@ -2,11 +2,11 @@ version: '3.0'
 
 services:
   smart-farm-web:
-    # build:
-    #   context: ./smart-farm-web/
-    #   dockerfile: ./Dockerfile
-    # container_name: smart-farm-web
-    image: "pondhub2013/smart-farm-web"
+    build:
+      context: ./smart-farm-web/
+      dockerfile: ./Dockerfile
+    container_name: smart-farm-web
+    # image: "pondhub2013/smart-farm-web"
     ports:
       - 80:80
     networks: 
@@ -14,10 +14,12 @@ services:
   
   smart-farm-api:
     build:
-      context: ./smart-fram-api/
+      context: ./smart-farm-api/
       dockerfile: ./Dockerfile
     container_name: smart-farm-api
     # image: "pondhub2013/smart-farm-api"
+    ports:
+      - 8080:80
     networks: 
       - smart-farm-network
 

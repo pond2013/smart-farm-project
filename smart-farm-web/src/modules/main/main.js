@@ -1,12 +1,10 @@
-import React from 'react'
+import React , {useRef} from 'react'
 import './main.scss'
 import temp from '../../assets/img/kkm.png'
 import soihumid from '../../assets/img/13.png'
 import humid from '../../assets/img/15.jpg'
 import wind from '../../assets/img/13.jpg'
-import off from '../../assets/img/OFF.png'
-import on from '../../assets/img/ON.png'
-import { Row, Container } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 
 function Main() {
   let list = [{id:"1", state:"on"},{id:"2", state:"off"},{id:"3", state:"on"},{id:"4", state:"off"}]
@@ -25,7 +23,10 @@ function Main() {
     } else {
       openChecked.src={off}
     }
+
+  
   }
+  function switchChecked() {}
   return (
     <>
       <div class="bg">
@@ -37,8 +38,9 @@ function Main() {
                   <img className="img-logofarm" src={temp} />
                 </div>
               </Row>
-              <Row className="m-2">
-                <p>0 ℃</p>
+              <Row className='m-2'>
+                <p ref={tempInput}>24 ℃</p>
+                <button onClick={getTemp}>Click me</button>
               </Row>
               <Row>
                 <p>อุณหภูมิ</p>
@@ -51,8 +53,8 @@ function Main() {
                   <img className="img-logofarm" src={soihumid} />
                 </div>
               </Row>
-              <Row className="m-2">
-                <p>0 %</p>
+              <Row className='m-2'>
+                <p>100 %</p>
               </Row>
               <Row>
                 <p>ความชื้นดิน</p>
@@ -65,8 +67,8 @@ function Main() {
                   <img className="img-logofarm" src={humid} />
                 </div>
               </Row>
-              <Row className="m-2">
-                <p>0 %</p>
+              <Row className='m-2'>
+                <p>100 %</p>
               </Row>
               <Row>
                 <p>ความชื้น</p>
@@ -79,7 +81,7 @@ function Main() {
                   <img className="img-logofarm" src={wind} />
                 </div>
               </Row>
-              <Row className="m-2">
+              <Row className='m-2'>
                 <p>0 m/s</p>
               </Row>
               <Row>
@@ -96,7 +98,7 @@ function Main() {
                 <input
                   type="checkbox"
                   className="slider"
-                  onChange={switchMode()}
+                  onChange={switchChecked()}
                 ></input>
                 <span className="slider"></span>
               </label>
@@ -104,7 +106,7 @@ function Main() {
             </div>
 
             <div className="d-flex justify-content-around">
-              <div className="m-4 p-2 col-example text-left card-relay-buttom" onClick={switchClick}>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
                 <Row>
                   <p>รีเลย์ 1</p>
                   <div className='d-flex justify-content-center'>
@@ -122,23 +124,9 @@ function Main() {
                 </Row>
               </div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom">
-              <Row>
-                  <p>รีเลย์ 3</p>
-                  <div className='d-flex justify-content-center'>
-                    <img className="img-logoswitch" src={on} />
-                  </div>
-                </Row>
-              </div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom">
-              <Row>
-                  <p>รีเลย์ 4</p>
-                  <div className='d-flex justify-content-center'>
-                    <img className="img-logoswitch" src={on} />
-                  </div>
-                </Row>
-              </div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
             </div>
           </div>
         </Container>
