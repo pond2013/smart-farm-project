@@ -13,10 +13,11 @@ function Main() {
   function switchMode() {}
   function Changeimg(){
     console.log("change")
+  
   }
   function switchClick() {
     console.log("click")
-    const openChecked = document.getElementById("relay1");
+    const openChecked = document.getElementById("switch1");
     if (list[0].state == "on"){
       console.log(list[0].state)
       openChecked.src={on}
@@ -91,7 +92,7 @@ function Main() {
           <div className="ms-5 d-flex flex-column justify-content-around card-buttom">
             <div className="mt-2 text-switch">
               <label id="auto">Mode</label>
-              <label class="switch">
+              <label className="switch">
                 <input
                   type="checkbox"
                   className="slider"
@@ -106,12 +107,9 @@ function Main() {
               <div className="m-4 p-2 col-example text-left card-relay-buttom" onClick={switchClick}>
                 <Row>
                   <p>รีเลย์ 1</p>
-                  
-                  <div className='d-flex justify-content-center'  >
-                  <img className="img-logoswitch" src={off} id='relay1' onChange={Changeimg}/>
-                  
+                  <div className='d-flex justify-content-center'>
+                  <img src={off} height={160} width={140} id='switch1' onChange={Changeimg}/>
                   </div>
-                  
                 </Row>
               </div>
 
@@ -119,7 +117,7 @@ function Main() {
                 <Row>
                   <p>รีเลย์ 2</p>
                   <div className='d-flex justify-content-center'>
-                    <img className="img-logoswitch"/>
+                    <img className="img-logoswitch" src={off} id='switch2'/>
                   </div>
                 </Row>
               </div>

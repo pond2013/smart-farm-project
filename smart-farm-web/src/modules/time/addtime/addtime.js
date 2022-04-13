@@ -25,17 +25,36 @@ function addTime() {
           <div className="d-flex justify-content-center">
             <div className="card-addtime m-5 p-5">
               <Row className="m-2 p-2">
-                  <Row className='p-1'>
-                      <p>วัน</p>
-                      <input type="date"></input>
-                  </Row>
-                <Row className='p-1'>
+                <Row className="p-1">
+                  <p>วัน</p>
+                  <input type="date"></input>
+                </Row>
+                <Row className="p-1">
                   <p>เริ่มทำงาน</p>
                   <input type="time"></input>
                 </Row>
-                <Row className='p-1'>
+                <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
                   <input type="number" placeholder="0"></input>
+                </Row>
+                <Row className="p-1">
+                  <p>รีเลย์</p>
+                  <Col>
+                  <input type="checkbox" id="relay1" name="relay1"></input>
+                  <label for="relay1">รีเลย์ 1</label>
+                  </Col>
+                  <Col>
+                  <input type="checkbox" id="relay2" name="relay2"></input>
+                  <label for="relay2">รีเลย์ 2</label>
+                  </Col>
+                  <Col>
+                  <input type="checkbox" id="relay3" name="relay3"></input>
+                  <label for="relay3">รีเลย์ 3</label>
+                  </Col>
+                  <Col>
+                  <input type="checkbox" id="relay4" name="relay4"></input>
+                  <label for="relay4">รีเลย์ 4</label>
+                  </Col>
                 </Row>
               </Row>
             </div>
