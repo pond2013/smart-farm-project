@@ -15,9 +15,7 @@ function Time() {
     <>
       <div
         className="bg-time"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
+        
       >
        <Container className='m-4 ms-4 p-4'>
           <Row className='m-1'>

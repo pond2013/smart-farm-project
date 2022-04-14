@@ -11,7 +11,7 @@ function Humid() {
   }
   return (
     <>
-      <div className="bg-temp">
+      <div className="bg-humid">
         <Container className="m-4 ms-4 p-4">
           <Row className="m-1">
             <Col sm={11}>
@@ -29,7 +29,7 @@ function Humid() {
 
           <Row>
             <Table responsive="sm">
-              <thead className="head-humdi">
+              <thead className="head-humid">
                 <tr>
                   <th>เริ่มทำงาน</th>
                   <th>ความชื้น(%RH)</th>

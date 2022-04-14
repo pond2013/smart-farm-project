@@ -40,19 +40,19 @@ function addTime() {
                 <Row className="p-1">
                   <p>รีเลย์</p>
                   <Col>
-                  <input type="checkbox" id="relay1" name="relay1"></input>
+                  <input className='relay-checkbox' type="checkbox" id="relay1" name="relay1"></input>
                   <label for="relay1">รีเลย์ 1</label>
                   </Col>
                   <Col>
-                  <input type="checkbox" id="relay2" name="relay2"></input>
+                  <input className='relay-checkbox' type="checkbox" id="relay2" name="relay2"></input>
                   <label for="relay2">รีเลย์ 2</label>
                   </Col>
                   <Col>
-                  <input type="checkbox" id="relay3" name="relay3"></input>
+                  <input className='relay-checkbox' type="checkbox" id="relay3" name="relay3"></input>
                   <label for="relay3">รีเลย์ 3</label>
                   </Col>
                   <Col>
-                  <input type="checkbox" id="relay4" name="relay4"></input>
+                  <input className='relay-checkbox' type="checkbox" id="relay4" name="relay4"></input>
                   <label for="relay4">รีเลย์ 4</label>
                   </Col>
                 </Row>

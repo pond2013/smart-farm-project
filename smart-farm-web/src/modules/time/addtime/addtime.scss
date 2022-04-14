@@ -6,11 +6,11 @@
     height: 870px;
 }
 .card-addtime{
-    width: 50%;
+    width: 60%;
     height: 50%;
     background-color: #D1E7E0;
     border-radius: 20px;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 #savebutton{
@@ -21,4 +21,10 @@
     color: #FFF;
     font-size: 20px;
     font-weight: bold;
+}
+
+input.relay-checkbox{
+    width: 18px;
+    height: 18px;
+    margin: 5px;
 }
