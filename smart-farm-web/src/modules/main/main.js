@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import './main.scss'
 import temp from '../../assets/img/temp-icon.png'
 import humid from '../../assets/img/humid-icon.png'
@@ -8,26 +8,44 @@ import on from '../../assets/img/ON.png'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function Main() {
+  useEffect(() => {
+    setInitImg()
+  }, [])
+
+  const [checked, setChecked] = useState(false)
   let list = [
     { id: '1', state: 'on' },
     { id: '2', state: 'off' },
     { id: '3', state: 'on' },
     { id: '4', state: 'off' },
   ]
-  function switchMode() {}
-  function Changeimg(e) {
-    e.target.setAttribute('src', on)
-    e.target.setAttribute('alt', 'on')
-  }
-  function switchClick() {
-    console.log('click')
-    const openChecked = document.getElementById('switch1')
-    if (list[0].state == 'on') {
-      console.log(list[0].state)
-    } else {
+
+  function setInitImg() {
+    for (let item of list) {
+      if (item.state == 'on') {
+        document.getElementById(`switch${item.id}`).setAttribute('src', on)
+        document.getElementById(`switch${item.id}`).setAttribute('alt', 'on')
+      } else {
+        document.getElementById(`switch${item.id}`).setAttribute('src', off)
+        document.getElementById(`switch${item.id}`).setAttribute('alt', 'off')
+      }
+      console.log(item)
     }
   }
-  function switchChecked() {}
+
+  function Changeimg(e) {
+    e.preventDefault()
+    if (checked == true) {
+      if (e.target.alt == 'off') {
+        e.target.setAttribute('src', on)
+        e.target.setAttribute('alt', 'on')
+      } else if (e.target.alt == 'on') {
+        e.target.setAttribute('src', off)
+        e.target.setAttribute('alt', 'off')
+      }
+    }
+  }
+
   return (
     <>
       <div class="bg">
@@ -97,8 +115,9 @@ function Main() {
               <label className="switch">
                 <input
                   type="checkbox"
-                  className="slider"
-                  onChange={switchChecked()}
+                  id="slider1"
+                  defaultChecked={checked}
+                  onChange={() => setChecked(!checked)}
                 ></input>
                 <span className="slider"></span>
               </label>
@@ -112,9 +131,7 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      src={off}
                       id="switch1"
-                      alt="off"
                       onClick={Changeimg}
                     />
                   </div>
@@ -127,8 +144,6 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      src={off}
-                      alt="off"
                       id="switch2"
                       onClick={Changeimg}
                     />
@@ -142,8 +157,6 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      src={off}
-                      alt="off"
                       id="switch3"
                       onClick={Changeimg}
                     />
@@ -151,7 +164,18 @@ function Main() {
                 </Row>
               </div>
 
-              <div className="m-4 p-2 col-example text-left card-relay-buttom"></div>
+              <div className="m-4 p-2 col-example text-left card-relay-buttom">
+                <Row>
+                  <p>รีเลย์ 4</p>
+                  <div className="d-flex justify-content-center">
+                    <img
+                      className="img-logoswitch"
+                      id="switch4"
+                      onClick={Changeimg}
+                    />
+                  </div>
+                </Row>
+              </div>
             </div>
           </div>
         </Container>

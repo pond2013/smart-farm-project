@@ -1,6 +1,5 @@
 import React from 'react'
 import './addtemp.scss'
-import bg from '../../../assets/img/100.jpg'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
@@ -12,12 +11,7 @@ function addTemp() {
 
   return (
     <>
-      <div
-        className="bg-addtemp"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
-      >
+      <div className="bg-addtemp">
         <Container className="m-5 p-5">
           <h2 className="p-3 d-flex justify-content-center text-temp">
             เพิ่มการตั้งค่าอุณหภูมิ
@@ -25,11 +19,11 @@ function addTemp() {
           <div className="d-flex justify-content-center">
             <div className="card-addtemp m-5 p-5">
               <Row className="m-2 p-2">
-                <Row className='p-1'>
+                <Row className="p-1">
                   <p>อุณหภูมิ (℃)</p>
                   <input type="number" placeholder="0"></input>
                 </Row>
-                <Row className='p-1'>
+                <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
                   <input type="number" placeholder="0"></input>
                 </Row>

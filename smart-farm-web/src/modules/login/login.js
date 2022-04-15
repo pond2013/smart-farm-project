@@ -9,7 +9,7 @@ function Login() {
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
     let history = useHistory();
-    async function loginClick(){    
+    async function loginClick(e){    
         console.warn(username,password)
         console.log("kokomi")
         let item = {username, password};
@@ -25,8 +25,10 @@ function Login() {
         // result = await result.json();
         // localStorage.setItem(JSON.stringify(result))
         history.push('/main')
+        e.preventDefault()
     }
     function registerClick(){    
+        
         history.push("/register")
     }
 

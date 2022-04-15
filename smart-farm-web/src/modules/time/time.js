@@ -1,6 +1,5 @@
 import React from 'react'
 import './time.scss'
-import bg from '../../assets/img/8.jpg'
 import { Row, Col, Container } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table'
 import { useHistory} from 'react-router-dom'

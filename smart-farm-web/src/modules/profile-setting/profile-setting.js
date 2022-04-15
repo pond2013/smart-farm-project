@@ -1,6 +1,5 @@
 import React from 'react'
 import './profile-setting.scss'
-import bg from '../../assets/img/15.jpg'
 import icon from '../../assets/img/modified-icon.png'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
@@ -12,9 +11,6 @@ function ProfileSetting() {
     <>
       <div
         className="bg-profile-setting"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
       >
         <Container className="m-5 p-5">
           <h2>การตั้งค่าบัญชี</h2>

@@ -1,6 +1,5 @@
 import React from 'react'
 import './addtime.scss'
-import bg from '../../../assets/img/15.jpg'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
@@ -12,12 +11,7 @@ function addTime() {
 
   return (
     <>
-      <div
-        className="bg-addtime"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
-      >
+      <div className="bg-addtime">
         <Container className="m-5 p-5">
           <h2 className="p-3 d-flex justify-content-center text-temp">
             เพิ่มการตั้งค่าเวลา
@@ -40,20 +34,40 @@ function addTime() {
                 <Row className="p-1">
                   <p>รีเลย์</p>
                   <Col>
-                  <input className='relay-checkbox' type="checkbox" id="relay1" name="relay1"></input>
-                  <label for="relay1">รีเลย์ 1</label>
+                    <input
+                      className="relay-checkbox"
+                      type="checkbox"
+                      id="relay1"
+                      name="relay1"
+                    ></input>
+                    <label for="relay1">รีเลย์ 1</label>
                   </Col>
                   <Col>
-                  <input className='relay-checkbox' type="checkbox" id="relay2" name="relay2"></input>
-                  <label for="relay2">รีเลย์ 2</label>
+                    <input
+                      className="relay-checkbox"
+                      type="checkbox"
+                      id="relay2"
+                      name="relay2"
+                    ></input>
+                    <label for="relay2">รีเลย์ 2</label>
                   </Col>
                   <Col>
-                  <input className='relay-checkbox' type="checkbox" id="relay3" name="relay3"></input>
-                  <label for="relay3">รีเลย์ 3</label>
+                    <input
+                      className="relay-checkbox"
+                      type="checkbox"
+                      id="relay3"
+                      name="relay3"
+                    ></input>
+                    <label for="relay3">รีเลย์ 3</label>
                   </Col>
                   <Col>
-                  <input className='relay-checkbox' type="checkbox" id="relay4" name="relay4"></input>
-                  <label for="relay4">รีเลย์ 4</label>
+                    <input
+                      className="relay-checkbox"
+                      type="checkbox"
+                      id="relay4"
+                      name="relay4"
+                    ></input>
+                    <label for="relay4">รีเลย์ 4</label>
                   </Col>
                 </Row>
               </Row>

@@ -19,12 +19,11 @@
 
 .bg{
     
-    background-image: url("../../assets/img/5.jpg");
     background-size: cover;
-    background-color: #E5E5E5;
+    background-color: #F6EEE0;
     display: flex;
     width: 100%;
-    height: 850px;
+    height: 870px;
 }
 
 .card-relay {
@@ -114,7 +113,7 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 input:checked + .slider {

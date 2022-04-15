@@ -1,6 +1,5 @@
 import React from 'react'
 import './addsoil-humid.scss'
-import bg from '../../../assets/img/13.jpg'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
@@ -14,9 +13,6 @@ function addSoilHumid() {
     <>
       <div
         className="bg-addsoil"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
       >
         <Container className="m-5 p-5">
           <h2 className="p-3 d-flex justify-content-center text-temp">

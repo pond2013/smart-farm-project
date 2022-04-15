@@ -11,7 +11,7 @@ function SoilHumid() {
   }
   return (
     <>
-      <div className="bg-temp">
+      <div className="bg-soil">
         <Container className="m-4 ms-4 p-4">
           <Row className="m-1">
             <Col sm={11}>
