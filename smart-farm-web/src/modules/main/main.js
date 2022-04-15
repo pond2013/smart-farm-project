@@ -30,7 +30,7 @@ function Main() {
 
   const getUser = () => {
     console.log("Testing : ")
-    fetch("https://localhost:8000/api/User")
+    fetch("http://localhost:8080/api/User")
       .then((response) => response.json())
       .then((responseJSON) => {
          // do stuff with responseJSON here...
@@ -41,7 +41,7 @@ function Main() {
 
     const postUser = () => {
       (async () => {
-          const rawResponse = await fetch('https://localhost:8000/api/User', {
+          const rawResponse = await fetch('http://localhost:8080/api/User', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
