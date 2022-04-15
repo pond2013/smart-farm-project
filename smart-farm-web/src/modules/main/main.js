@@ -27,6 +27,41 @@ function Main() {
     } else {
     }
   }
+
+  const getUser = () => {
+    console.log("Testing : ")
+    fetch("https://localhost:8000/api/User")
+      .then((response) => response.json())
+      .then((responseJSON) => {
+         // do stuff with responseJSON here...
+         console.log(responseJSON);
+
+      });
+    }
+
+    const postUser = () => {
+      (async () => {
+          const rawResponse = await fetch('https://localhost:8000/api/User', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+              {
+                id: "",
+                pid: 343766, 
+                name: "Inazuma", 
+                Email: "https://nxxxxxx.net/g/383661/",
+                Password: "SweetTeaMonster"
+              })
+          });
+          const content = await rawResponse.json();
+        
+          console.log(content);
+        })();
+      }
+
   function switchChecked() {}
   return (
     <>
@@ -42,6 +77,8 @@ function Main() {
               <Row className="m-2 mt-4">
                 <p>24 ℃</p>
               </Row>
+              <button onClick={getUser}> GET ME </button>
+              <button onClick={postUser}> POST ME </button>
               <Row>
                 <p>อุณหภูมิ</p>
               </Row>
