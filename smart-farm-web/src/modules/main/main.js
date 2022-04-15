@@ -60,6 +60,8 @@ function Main() {
               <Row className="m-2 mt-4">
                 <p>24 ℃</p>
               </Row>
+              <button onClick={getUser}> GET ME </button>
+              <button onClick={postUser}> POST ME </button>
               <Row>
                 <p>อุณหภูมิ</p>
               </Row>

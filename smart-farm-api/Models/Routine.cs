@@ -8,15 +8,14 @@ public class Routine{
     [BsonRepresentation(BsonType.ObjectId)]
 
     public string? Id { get; set; }
-    public double? number { get; set; }
-    public double temp { get; set; }
+    public double? temp { get; set; }
 
-    public double airMoisture { get; set; }
+    public double? airMoisture { get; set; }
 
-    public double soilMoisture { get; set; }
+    public double? soilMoisture { get; set; }
 
-    public double windSpeed { get; set; }
+    public double? windSpeed { get; set; }
 
-    public date? date { get; set; }
+    public DateTime Date { get; set; }
     
 }

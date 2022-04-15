@@ -8,11 +8,9 @@ public class SetTime
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
-    [BsonElement("name")]
-    public string? Name { get; set; }
-    public string? relayId { get; set; }
+    public string? ddmmyy { get; set; }
     public string? timeToStart { get; set; }
     public string? duration { get; set; }
-    public date? date { get; set; }    
+    public string? relayId { get; set; }
     
 }
