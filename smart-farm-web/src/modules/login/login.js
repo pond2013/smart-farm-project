@@ -28,7 +28,6 @@ function Login() {
     }
     function registerClick(){    
         history.push("/register")
-        alert("หมอลำ");
     }
 
     

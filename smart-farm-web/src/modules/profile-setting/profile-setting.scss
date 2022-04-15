@@ -1,0 +1,27 @@
+.bg-profile-setting{
+    background-color: #E5E5E5;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    height: 1000px;
+}
+
+p{
+    font-size: 22px;
+}
+
+.modified-icon{
+    height: 15px;
+    width: 15px;
+}
+
+.profile-setting input[type="email"],
+.profile-setting input[type="password"],
+.profile-setting input[type="text"]{
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
