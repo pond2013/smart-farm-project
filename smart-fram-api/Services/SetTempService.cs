@@ -6,7 +6,7 @@ namespace smart_fram_api.Services;
 
 public class SetTempService
 {
-    private readonly IMongoCollection<SetTemp> _usersCollection;
+    private readonly IMongoCollection<SetTemp> _setTempCollection;
 
     public SetTempService(
         IOptions<SmartFarmDatabaseSettings> smartFarmDatabaseSettings)
@@ -17,22 +17,22 @@ public class SetTempService
         var mongoDatabase = mongoClient.GetDatabase(
             smartFarmDatabaseSettings.Value.DatabaseName);
 
-        _usersCollection = mongoDatabase.GetCollection<SetTemp>(
+        _setTempCollection = mongoDatabase.GetCollection<SetTemp>(
             smartFarmDatabaseSettings.Value.SetTempCollectionName);
     }
 
     public async Task<List<SetTemp>> GetAsync() =>
-        await _usersCollection.Find(_ => true).ToListAsync();
+        await _setTempCollection.Find(_ => true).ToListAsync();
 
     public async Task<SetTemp?> GetAsync(string id) =>
-        await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        await _setTempCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(SetTemp newTemp) =>
-        await _usersCollection.InsertOneAsync(newTemp);
+        await _setTempCollection.InsertOneAsync(newTemp);
 
     public async Task UpdateAsync(string id, SetTemp updatedTemp) =>
-        await _usersCollection.ReplaceOneAsync(x => x.Id == id, updatedTemp);
+        await _setTempCollection.ReplaceOneAsync(x => x.Id == id, updatedTemp);
 
     public async Task RemoveAsync(string id) =>
-        await _usersCollection.DeleteOneAsync(x => x.Id == id);
+        await _setTempCollection.DeleteOneAsync(x => x.Id == id);
 }
