@@ -8,8 +8,6 @@ public class User
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
-    
-    public double? Pid { get; set; }
 
     [BsonElement("name")]
     public string? Name { get; set; }

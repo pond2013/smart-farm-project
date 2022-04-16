@@ -65,8 +65,6 @@ namespace smart_fram_api.Controllers
                 graphItem.entries = entriesItem;
                 graphlist.Add(graphItem);
             }
-
-
             return graphlist;
         }
 
