@@ -67,8 +67,19 @@ public class UserController : ControllerBase
                 CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
                 return Ok();
             }
-        }
+        } 
         return BadRequest();
+    }
+
+    [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<User> ListUser)
+    {
+        foreach (User item in ListUser) {
+            await _userService.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
     }
 
     [HttpPut("{id}")]

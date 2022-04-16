@@ -3,79 +3,80 @@ Open: http://localhost:8080/swagger/index.html
 Use: POST on each API
 
 /////////////////Relay Node//////////////////////////
-
+[
 {
   "id": "",
   "relayId": "1",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "2",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "3",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "4",
   "turnOn": false,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "5",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "11",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "12",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "13",
   "turnOn": false,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "14",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+,
 {
   "id": "",
   "relayId": "15",
   "turnOn": true,
   "date": "04/16/2022"
 }
-
+]
 
 /////////////////Air Moisture///////////////////////
+[
 {
   "id": "",
   "timeToStart": "12:00",
@@ -92,6 +93,7 @@ Use: POST on each API
   "relayId": "2",
   "user": "admin"
 }
+,
 {
   "id": "",
   "timeToStart": "06:00",
@@ -100,6 +102,7 @@ Use: POST on each API
   "relayId": "3",
   "user": "admin"
 }
+,
 {
   "id": "",
   "timeToStart": "16:00",
@@ -108,9 +111,9 @@ Use: POST on each API
   "relayId": "4",
   "user": "admin"
 }
-
+]
 /////////////////Soil Moisture//////////////////////////
-
+[
 {
   "id": "",
   "timeToStart": "06:30",
@@ -119,6 +122,7 @@ Use: POST on each API
   "relayId": "1",
   "user": "admin"
 }
+,
 {
   "id": "",
   "timeToStart": "12:30",
@@ -127,6 +131,7 @@ Use: POST on each API
   "relayId": "2",
   "user": "admin"
 }
+,
 {
   "id": "",
   "timeToStart": "00:30",
@@ -135,6 +140,7 @@ Use: POST on each API
   "relayId": "3",
   "user": "admin"
 }
+,
 {
   "id": "",
   "timeToStart": "03:30",
@@ -143,9 +149,9 @@ Use: POST on each API
   "relayId": "4",
   "user": "admin"
 }
-
+]
 /////////////////TEMPERATURE//////////////////////////
-
+[
 {
   "id": "",
   "tempToStart": "25",
@@ -153,7 +159,7 @@ Use: POST on each API
   "relayId": "11",
   "user": "string"
 }
-
+,
 {
   "id": "",
   "tempToStart": "18",
@@ -161,7 +167,7 @@ Use: POST on each API
   "relayId": "12",
   "user": "string"
 }
-
+,
 {
   "id": "",
   "tempToStart": "32",
@@ -169,7 +175,7 @@ Use: POST on each API
   "relayId": "13",
   "user": "string"
 }
-
+,
 {
   "id": "",
   "tempToStart": "-3",
@@ -177,7 +183,7 @@ Use: POST on each API
   "relayId": "14",
   "user": "string"
 }
-
+,
 {
   "id": "",
   "tempToStart": "27",
@@ -185,7 +191,7 @@ Use: POST on each API
   "relayId": "15",
   "user": "string"
 }
-
+]
 /////////////////Set Time//////////////////////////
 {
   "id": "",
@@ -197,24 +203,25 @@ Use: POST on each API
 
 
 /////////////////User//////////////////////////
-
+[
  {
   "id": "",
   "name": "Punnarut",
   "email": "pixivman@hotmail.com",
   "password": "Imnottsun"
  }
-
+,
  {
   "id": "",
   "name": "Sercetman",
   "email": "prayatJandata@hotmail.com",
   "password": "forgloryandmoney"
  }
-
+,
  {
   "id": "",
   "name": "Trash Goblin",
   "email": "Suikalovebooze@hotmail.com",
   "password": "iforgot"
  }
+]

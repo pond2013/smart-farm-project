@@ -37,6 +37,17 @@ public class SetTempController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = temp.Id }, temp);
     }
 
+    [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<SetTemp> ListTemp)
+    {
+        foreach (SetTemp item in ListTemp) {
+            await _setTemp.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
+    }
+
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, SetTemp updateTemp)
     {

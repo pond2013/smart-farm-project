@@ -37,6 +37,17 @@ public class SetAirMoistureController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = moisture.Id }, moisture);
     }
 
+        [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<SetAirMoisture> ListAirMoisture)
+    {
+        foreach (SetAirMoisture item in ListAirMoisture) {
+            await _setAirMoistureService.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
+    }
+
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, SetAirMoisture updateMoisture)
     {
