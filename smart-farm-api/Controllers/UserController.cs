@@ -17,7 +17,7 @@ public class UserController : ControllerBase
     public async Task<List<User>> Get() =>
         await _userService.GetAsync();
 
-    [HttpGet("{username}")]
+    [HttpGet("By/{username}")]
     public async Task<ActionResult<User>> GetUserByUsername(string username)
     {
         var user = await _userService.GetUsernameAsync(username);
@@ -31,7 +31,7 @@ public class UserController : ControllerBase
     }
 
 
-        [HttpGet("{username}/{password}")]
+    [HttpGet("{username}/{password}")]
     public async Task<ActionResult<Boolean>> CheckUserPassword(string username, string password)
     {
         var user = await _userService.GetUsernameAsync(username);
@@ -57,13 +57,13 @@ public class UserController : ControllerBase
             var user = await _userService.GetUsernameAsync(newUser.Name);
 
             if (newUser.Name == user?.Name) {
-                return Problem("There more");
+                return Problem("There is more user");
             }
 
             else {
                 await _userService.CreateAsync(newUser);
-
-                return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+                CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+                return Ok();
             }
         }
         return BadRequest();
@@ -123,6 +123,22 @@ public class UserController : ControllerBase
 
         await _userService.RemoveAsync(id);
 
+        return NoContent();
+    }
+
+    [HttpDelete("By/{username}")]
+    public async Task<IActionResult> DeleteByUsername(string username)
+    {
+        var user = await _userService.GetUsernameAsync(username);
+
+        if (user is not null)
+        {
+            if (user.Id is not null) {
+            await _userService.RemoveAsync(user.Id);
+            }
+        } else {
+            return NotFound();
+        }
         return NoContent();
     }
 }
