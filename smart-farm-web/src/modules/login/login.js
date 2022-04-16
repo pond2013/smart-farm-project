@@ -9,23 +9,28 @@ function Login() {
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
     let history = useHistory();
-    async function loginClick(e){    
-        console.warn(username,password)
-        console.log("kokomi")
-        let item = {username, password};
-        // let result = await fatch(""),{
-        //   medthod: 'POST',
-        //   headers:{
-        //     "Content-Type": "application/json",
-        //     "Accept": "application/json"
-        //   },
-        //   body: JSON.stringify(item)
-        // }};
 
-        // result = await result.json();
-        // localStorage.setItem(JSON.stringify(result))
-        history.push('/main')
-        e.preventDefault()
+    async function loginUser(){    
+        
+        let item = {username, password};
+        const rawResponse = await fetch('http://localhost:8080/api/User', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item)
+      });
+      
+    }
+    
+    const handleSubmit = async e =>{
+      e.preventDefault()
+      const response = await loginUser({
+        username,
+        password
+      });
+      window.location.href = "../main"
     }
     function registerClick(){    
         
@@ -51,7 +56,7 @@ function Login() {
                     <h1>Login</h1>
                     <input type="text" id="username" name="username" placeholder="Username" onChange={(e)=>setUsername(e.target.value)}></input>
                     <input type="password" id="password" name="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}></input>
-                    <input type="submit" value="LOGIN" onClick={loginClick}></input>
+                    <input type="submit" value="LOGIN" onClick={handleSubmit}></input>
                     <a href='#' onClick={registerClick}>Create Account</a>
                   </form>
                     
