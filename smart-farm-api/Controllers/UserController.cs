@@ -31,22 +31,24 @@ public class UserController : ControllerBase
     }
 
 
-    [HttpGet("{username}/{password}")]
-    public async Task<ActionResult<Boolean>> CheckUserPassword(string username, string password)
-    {
-        var user = await _userService.GetUsernameAsync(username);
+    [HttpPost("CheckUserPassword")]
+    public async Task<ActionResult> CheckUserPassword(User newUser)
+{
+        if (newUser.Name is not null){
 
-            if (user is null)
-            {
-                return NotFound();
+            var user = await _userService.GetUsernameAsync(newUser.Name);
+
+            if (newUser.Name == user?.Name) {
+                if (newUser.Password == user?.Password) {
+                    return Ok();
+                } else {
+                    return Problem("Password wrong");
+                }
+            } else {
+                return Problem("Who name themselves that?");
             }
-
-            if (user.Password == password)
-            {
-                return Ok(true);
-            }
-
-        else return Ok(false);;
+        }
+        return BadRequest();
     }
 
     [HttpPost]

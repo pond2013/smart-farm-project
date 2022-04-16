@@ -57,14 +57,10 @@ const postUser = () => {
 
     const deleteUser= () => {
       console.log("Delete Testing : ")
-      fetch("http://localhost:8080/api/Sample/graphsify")
-        .then((response) => response.json())
-        .then((responseJSON) => {
-            // do stuff with responseJSON here...
-            console.log(responseJSON);
-    
-        });
+      fetch("http://localhost:8080/api/User/By/Inazuma" , {method: 'DELETE'})
+        .then((response) => console.log(response));
         
+
       }
   return (
     <>

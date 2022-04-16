@@ -200,7 +200,6 @@ Use: POST on each API
 
  {
   "id": "",
-  "pid": 1329900967557,
   "name": "Punnarut",
   "email": "pixivman@hotmail.com",
   "password": "Imnottsun"
@@ -208,7 +207,6 @@ Use: POST on each API
 
  {
   "id": "",
-  "pid": 1324567423412,
   "name": "Sercetman",
   "email": "prayatJandata@hotmail.com",
   "password": "forgloryandmoney"
@@ -216,7 +214,6 @@ Use: POST on each API
 
  {
   "id": "",
-  "pid": 9914613156121,
   "name": "Trash Goblin",
   "email": "Suikalovebooze@hotmail.com",
   "password": "iforgot"
