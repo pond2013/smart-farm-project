@@ -17,29 +17,60 @@ public class UserController : ControllerBase
     public async Task<List<User>> Get() =>
         await _userService.GetAsync();
 
-    [HttpGet("{Pid}")]
-    public async Task<ActionResult<User>> Get(double Pid)
+    [HttpGet("By/{username}")]
+    public async Task<ActionResult<User>> GetUserByUsername(string username)
     {
-        var user = await _userService.GetAsync(Pid);
+        var user = await _userService.GetUsernameAsync(username);
 
         if (user is null)
         {
             return NotFound();
         }
 
-        return user;
+        return Ok(user);
+    }
+
+
+    [HttpGet("{username}/{password}")]
+    public async Task<ActionResult<Boolean>> CheckUserPassword(string username, string password)
+    {
+        var user = await _userService.GetUsernameAsync(username);
+
+            if (user is null)
+            {
+                return NotFound();
+            }
+
+            if (user.Password == password)
+            {
+                return Ok(true);
+            }
+
+        else return Ok(false);;
     }
 
     [HttpPost]
     public async Task<IActionResult> Post(User newUser)
     {
-        await _userService.CreateAsync(newUser);
+        if (newUser.Name is not null){
 
-        return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+            var user = await _userService.GetUsernameAsync(newUser.Name);
+
+            if (newUser.Name == user?.Name) {
+                return Problem("There is more user");
+            }
+
+            else {
+                await _userService.CreateAsync(newUser);
+                CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
+                return Ok();
+            }
+        }
+        return BadRequest();
     }
 
-    [HttpPut("{Pid}")]
-    public async Task<IActionResult> Update(double id, User updatedUser)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(string id, User updatedUser)
     {
         var user = await _userService.GetAsync(id);
 
@@ -48,15 +79,15 @@ public class UserController : ControllerBase
             return NotFound();
         }
 
-        user.Pid  = updatedUser.Pid;
+        user.Id  = updatedUser.Id;
 
         await _userService.UpdateAsync(id, user);
 
         return NoContent();
     }
 
-    [HttpPut("password/{Pid}/{password}")]
-    public async Task<IActionResult> UpdatePassword(double id,string password)
+    [HttpPut("password/{id}/{password}")]
+    public async Task<IActionResult> UpdatePassword(string id,string password)
     {
         var user = await _userService.GetAsync(id);
 
@@ -69,7 +100,7 @@ public class UserController : ControllerBase
 
         User updatedUser = new User() ;
 
-        updatedUser.Pid = user.Pid;
+        updatedUser.Id = user.Id;
         updatedUser.Name = user.Name;
         updatedUser.Email = user.Email;
         updatedUser.Password  = password;
@@ -80,18 +111,34 @@ public class UserController : ControllerBase
     }
 
 
-    [HttpDelete("{Pid}")]
-    public async Task<IActionResult> Delete(double Pid)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
     {
-        var user = await _userService.GetAsync(Pid);
+        var user = await _userService.GetAsync(id);
 
         if (user is null)
         {
             return NotFound();
         }
 
-        await _userService.RemoveAsync(Pid);
+        await _userService.RemoveAsync(id);
 
+        return NoContent();
+    }
+
+    [HttpDelete("By/{username}")]
+    public async Task<IActionResult> DeleteByUsername(string username)
+    {
+        var user = await _userService.GetUsernameAsync(username);
+
+        if (user is not null)
+        {
+            if (user.Id is not null) {
+            await _userService.RemoveAsync(user.Id);
+            }
+        } else {
+            return NotFound();
+        }
         return NoContent();
     }
 }

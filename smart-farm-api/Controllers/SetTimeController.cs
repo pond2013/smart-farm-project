@@ -29,6 +29,7 @@ public class SetTimeController : ControllerBase
 
         return node;
     }
+    
      [HttpPost]
     public async Task<IActionResult> Post(SetTime timer)
     {
