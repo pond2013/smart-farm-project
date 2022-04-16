@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './register.scss'
 import img from '../../assets/img/11.jpg'
 import { useHistory } from 'react-router-dom'
