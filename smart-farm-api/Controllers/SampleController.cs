@@ -1,3 +1,4 @@
+using smart_fram_api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace smart_fram_api.Controllers
@@ -34,6 +35,39 @@ namespace smart_fram_api.Controllers
             }
             
             return randomlist;
+        }
+
+
+        [HttpGet("graphsify")]
+        public ActionResult<List<graphsify>> GetSify()
+        {
+            List<graphsify> graphlist = new List<graphsify>();
+            int randomTem, randomSpeed, randomSoilMoisture , randomAirMoisture, time;
+            string ddmmyy = "04/16/2022";
+            string currentTime = "";
+            string relayId = "1";
+
+            for (time=0; time < 24 ; time++){
+                graphsify graphItem = new graphsify();
+                entry entriesItem = new entry();
+                randomTem = Random.Shared.Next(24, 32);
+                randomSpeed = Random.Shared.Next(0, 20);
+                randomAirMoisture = Random.Shared.Next(10, 70);
+                randomSoilMoisture = Random.Shared.Next(0, 100);
+                currentTime = time.ToString() + ":00";
+                graphItem.ddmmyy = ddmmyy;
+                graphItem.relayId = relayId;
+                entriesItem.time = currentTime;
+                entriesItem.airMoisture = randomAirMoisture;
+                entriesItem.soilMoisture = randomSoilMoisture;
+                entriesItem.windSpeed = randomSpeed;
+                entriesItem.temperature = randomTem;
+                graphItem.entries = entriesItem;
+                graphlist.Add(graphItem);
+            }
+
+
+            return graphlist;
         }
 
 

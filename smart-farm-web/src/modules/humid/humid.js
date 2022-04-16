@@ -46,7 +46,7 @@ const postUser = () => {
   }
   const randomNum= () => {
     console.log("Random Testing : ")
-    fetch("http://localhost:8080/api/Sample/giverandomnumber?start=25&end=34")
+    fetch("http://localhost:8080/api/Sample/graphsify")
       .then((response) => response.json())
       .then((responseJSON) => {
           // do stuff with responseJSON here...
