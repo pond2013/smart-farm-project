@@ -12,6 +12,7 @@ function Register() {
   const [confirm, setConfirm] = useState('');
 
   let history = useHistory()
+
   const postUser = () => {
     (async () => {
         const rawResponse = await fetch('http://localhost:8080/api/User', {
@@ -23,35 +24,31 @@ function Register() {
           body: JSON.stringify(
             {
               id: "",
-              pid: 343766, 
               name: username, 
               Email: email,
               Password: password
             })
         });
-        const content = await rawResponse.json();
-      
-        console.log(content);
+        
       })();
     }
   const handleSubmit = (e) => {
     e.preventDefault()
     isValiEmail(email)
-    if (password != confirm) {
-      alert('Wrong Password')
-    } else {
+    if (password == confirm && isValiEmail(email) == true) {
       postUser()
-      history.push('../login')
+      history.push('../main')
+    } else {
+      alert('Wrong Password or E-mail')
     }
   }
 
   function isValiEmail(val) {
     let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if (!regEmail.test(val)) {
-      alert('Invalid Email Address')
-      console.log('Invalid Email Address')
+      return false
     } else {
-      console.log('Valid Email')
+      return true
     }
   }
 
