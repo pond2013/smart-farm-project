@@ -9,6 +9,51 @@ function Humid() {
   function AddClick() {
     history.push('/addhumid')
   }
+  const getUser = () => {
+    console.log("Testing : ")
+    fetch("http://localhost:8080/api/User")
+      .then((response) => response.json())
+      .then((responseJSON) => {
+          // do stuff with responseJSON here...
+          console.log(responseJSON);
+  
+      });
+    }
+  
+  const postUser = () => {
+    (async () => {
+        const rawResponse = await fetch('http://localhost:8080/api/User', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            {
+              id: "",
+              pid: 343766, 
+              name: "Inazuma", 
+              Email: "https://nxxxxxx.net/g/383661/",
+              Password: "SweetTeaMonster"
+            })
+        });
+        const content = await rawResponse.json();
+      
+        console.log(content);
+      })();
+    }
+    const randomNum= () => {
+      console.log("Random Testing : ")
+      fetch("http://localhost:8080/api/Sample/giverandomnumber?start=25&end=34")
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            // do stuff with responseJSON here...
+            console.log(responseJSON);
+    
+        });
+        
+      }
+
   return (
     <>
       <div className="bg-humid">
@@ -69,6 +114,9 @@ function Humid() {
               </tbody>
             </Table>
           </Row>
+          <button onClick={getUser}> GET ME </button>
+          <button onClick={postUser}> POST ME </button>
+          <button onClick={randomNum}> RANDOM ME </button>
         </Container>
       </div>
     </>
