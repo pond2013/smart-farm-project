@@ -8,19 +8,19 @@ namespace smart_fram_api.Controllers;
 [Route("api/[controller]")]
 public class SetSoilMoistureController : ControllerBase
 {
-    private readonly SetSoilMoistureService _setMoisture;
+    private readonly SetSoilMoistureService _setSoilMoistureService;
 
-    public SetSoilMoistureController(SetSoilMoistureService setTempService) =>
-        _setMoisture = setTempService;
+    public SetSoilMoistureController(SetSoilMoistureService setSoilMoistureService) =>
+        _setSoilMoistureService = setSoilMoistureService;
 
     [HttpGet]
     public async Task<List<SetSoilMoisture>> Get() =>
-        await _setMoisture.GetAsync();
+        await _setSoilMoistureService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<SetSoilMoisture>> Get(string id)
     {
-        var node = await _setMoisture.GetAsync(id);
+        var node = await _setSoilMoistureService.GetAsync(id);
 
         if (node is null)
         {
@@ -32,7 +32,7 @@ public class SetSoilMoistureController : ControllerBase
      [HttpPost]
     public async Task<IActionResult> Post(SetSoilMoisture moisture)
     {
-        await _setMoisture.CreateAsync(moisture);
+        await _setSoilMoistureService.CreateAsync(moisture);
 
         return CreatedAtAction(nameof(Get), new { id = moisture.Id }, moisture);
     }
@@ -40,7 +40,7 @@ public class SetSoilMoistureController : ControllerBase
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, SetSoilMoisture updateMoisture)
     {
-        var node = await _setMoisture.GetAsync(id);
+        var node = await _setSoilMoistureService.GetAsync(id);
 
         if (node is null)
         {
@@ -49,7 +49,7 @@ public class SetSoilMoistureController : ControllerBase
 
         updateMoisture.Id = node.Id;
 
-        await _setMoisture.UpdateAsync(id, updateMoisture);
+        await _setSoilMoistureService.UpdateAsync(id, updateMoisture);
 
         return NoContent();
     }
@@ -57,14 +57,14 @@ public class SetSoilMoistureController : ControllerBase
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var node = await _setMoisture.GetAsync(id);
+        var node = await _setSoilMoistureService.GetAsync(id);
 
         if (node is null)
         {
             return NotFound();
         }
 
-        await _setMoisture.RemoveAsync(id);
+        await _setSoilMoistureService.RemoveAsync(id);
 
         return NoContent();
     }

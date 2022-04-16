@@ -18,7 +18,7 @@ public class SetSoilMoistureService
             smartFarmDatabaseSettings.Value.DatabaseName);
 
         _setSoilMoistureCollection = mongoDatabase.GetCollection<SetSoilMoisture>(
-            smartFarmDatabaseSettings.Value.SetTempCollectionName);
+            smartFarmDatabaseSettings.Value.SetSoilMoistureCollectionName);
     }
 
     public async Task<List<SetSoilMoisture>> GetAsync() =>
