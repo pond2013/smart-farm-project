@@ -1,28 +1,72 @@
+using smart_fram_api.Models;
+using smart_fram_api.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace smart_fram_api.Controllers
+namespace smart_fram_api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class RelayController : ControllerBase
 {
-    [Route("api/[controller]")]
-    public class RelayController : Controller
+    private readonly RelayService _relayService;
+
+    public RelayController(RelayService relayService) =>
+        _relayService = relayService;
+
+    [HttpGet]
+    public async Task<List<RelayNode>> Get() =>
+        await _relayService.GetAsync();
+
+    [HttpGet("{id:length(24)}")]
+    public async Task<ActionResult<RelayNode>> Get(string id)
     {
-        public RelayController() { }
+        var node = await _relayService.GetAsync(id);
 
-        // GET api/sample
-        [HttpGet("")]
-        public ActionResult<IEnumerable<String>> Gets()
+        if (node is null)
         {
-            return new string[] { "value1", "value2" };
+            return NotFound();
         }
 
-        // GET api/sample/{id}
-        [HttpGet("{id}")]
-        public ActionResult<String> GetById(int id)
+        return node;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Post(RelayNode newNode)
+    {
+        await _relayService.CreateAsync(newNode);
+
+        return CreatedAtAction(nameof(Get), new { id = newNode.Id }, newNode);
+    }
+
+    [HttpPut("{id:length(24)}")]
+    public async Task<IActionResult> Update(string id, RelayNode updatedNode)
+    {
+        var node = await _relayService.GetAsync(id);
+
+        if (node is null)
         {
-            return "value" + id;
+            return NotFound();
         }
 
-        // POST api/sample
-        [HttpPost("")]
-        public void Post([FromBody] string value) { }
+        updatedNode.Id = node.Id;
+
+        await _relayService.UpdateAsync(id, updatedNode);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id:length(24)}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var node = await _relayService.GetAsync(id);
+
+        if (node is null)
+        {
+            return NotFound();
+        }
+
+        await _relayService.RemoveAsync(id);
+
+        return NoContent();
     }
 }

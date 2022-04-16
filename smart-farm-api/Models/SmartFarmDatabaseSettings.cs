@@ -10,5 +10,9 @@ public class SmartFarmDatabaseSettings
     public string UsersCollectionName { get; set; } = null!;
     public string SetTimeCollectionName { get; set; } = null!;
     public string SetTempCollectionName { get; set; } = null!;
+
+    public string SetAirMoistureCollectionName { get; set; } = null!;
+
+    public string SetSoilMoistureCollectionName { get; set; } = null!;
     public string RoutineCollectionName { get; set; } = null!;
 }

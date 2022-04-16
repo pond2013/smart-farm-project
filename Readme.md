@@ -29,3 +29,9 @@ http://localhost:8000/api/sample/
 
 ## compose
 docker-compose up -d
+
+## Add sample data
+Ref: SampleData.txt
+Run: docker-compose up --build
+Open: http://localhost:8080/swagger/index.html
+Use: POST on each API
