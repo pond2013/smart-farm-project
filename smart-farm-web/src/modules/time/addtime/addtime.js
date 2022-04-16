@@ -23,9 +23,7 @@ function addTime() {
                 <Row className="p-1">
                   <p>วัน</p>
                   <input
-                    type="date"
-          
-                    
+                    type="date"           
                   ></input>
                 </Row>
                 <Row className="p-1">
