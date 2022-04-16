@@ -9,32 +9,40 @@ function Login() {
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
     let history = useHistory();
-
-    async function loginUser(){    
-        
-        let item = {username, password};
-        const rawResponse = await fetch('http://localhost:8080/api/User', {
+    
+    const handleSubmit = async e =>{
+      e.preventDefault();
+      const rawResponse = await fetch('http://localhost:8080/api/User', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(item)
+        body: JSON.stringify(
+          {
+            id: "",
+            pid: 343766, 
+            name: username, 
+            Email: "https://nxxxxxx.net/g/383661/",
+            Password: password
+          })
       });
+      const content = await rawResponse.json();
+        
+        console.log(content);
       
-    }
-    
-    const handleSubmit = async e =>{
-      e.preventDefault()
-      const response = await loginUser({
-        username,
-        password
-      });
-      window.location.href = "../main"
+      // window.location.href = "../main"
     }
     function registerClick(){    
-        
-        history.push("/register")
+      fetch("http://localhost:8080/api/User")
+      .then((response) => response.json())
+      .then((responseJSON) => {
+          // do stuff with responseJSON here...
+
+          console.log(responseJSON);
+  
+      });
+        // history.push("/register")
     }
 
     
