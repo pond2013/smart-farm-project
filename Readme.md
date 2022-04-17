@@ -27,11 +27,37 @@ docker build -t smart-farm-api -f Dockerfile . <br />
 docker run  -p 8000:80 -d smart-farm-api <br />
 http://localhost:8000/api/sample/
 
-## compose
+## Run Docker Compose
+In case using local build
+```bash
+docker-compose up --build -d
+```
+In case using docker image from cloud
+```bash
 docker-compose up -d
+```
 
 ## Add sample data
 Ref: SampleData.txt
 Run: docker-compose up --build
 Open: http://localhost:8080/swagger/index.html
 Use: POST on each API
+
+## Run Kubernetes cluster
+```bash
+cd kube-deploy
+kubectl create cluster -f .
+```
+
+## Delete Kubernetes cluster and clear docker cache
+To clean all should run the folowing command
+```bash
+kubectl get deployment
+kubectl delete deployment sth
+kubectl delete --all pods
+kind delete cluster
+docker system prune -a
+```
+
+## Local Frontend url
+http://localhost/home
