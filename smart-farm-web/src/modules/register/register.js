@@ -13,31 +13,33 @@ function Register() {
 
   let history = useHistory()
 
-  const postUser = () => {
-    (async () => {
-        const rawResponse = await fetch('http://localhost:8080/api/User', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(
-            {
-              id: "",
-              name: username, 
-              Email: email,
-              Password: password
-            })
-        });
-        
-      })();
-    }
   const handleSubmit = (e) => {
     e.preventDefault()
     isValiEmail(email)
     if (password == confirm && isValiEmail(email) == true) {
-      postUser()
-      history.push('../main')
+      fetch(
+        'http://localhost:8080/api/User',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: "",
+              name: username, 
+              Email: email,
+              Password: password
+          }),
+        },
+      ).then((response) => {
+        if (response.ok == true) {
+          history.push('../main')
+        } else {
+          alert('Username Taken or Bad Username or Password ')
+        }
+      })
+      
     } else {
       alert('Wrong Password or E-mail')
     }

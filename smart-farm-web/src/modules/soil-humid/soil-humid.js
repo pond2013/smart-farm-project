@@ -1,14 +1,100 @@
-import React from 'react'
+import React , {useRef , useEffect} from 'react'
 import './soil-humid.scss'
 import Table from 'react-bootstrap/Table'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function SoilHumid() {
+
   let history = new useHistory()
+  const cardplane = useRef(null)
+  var thisJson
   function AddClick() {
     history.push('/addsoilHumid')
   }
+
+
+
+  function setCardInPlane(timetoStart, moisture, duration, relayId, row) {
+    var tbody = document.getElementById("cases-soilhumid");
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+    var td5 = document.createElement("td");
+    var delButton = document.createElement("button")
+    td1.textContent = timetoStart
+    td2.textContent = moisture
+    td3.textContent = duration
+    td4.textContent = relayId
+    delButton.textContent = "ลบ"
+    td5.appendChild(delButton)
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    tr.appendChild(td5)
+    tbody.appendChild(tr)
+    tr.id = "row" + row;
+    tr.value = row;
+    delButton.addEventListener("click", e =>  {
+      delData(e.target.parentElement.parentElement.value)
+    })
+}
+
+
+const getData = () => {
+  fetch("http://localhost:8080/api/SetSoilMoisture")
+  .then((response) => response.json())
+  .then((responseJSON) => {
+      // do stuff with responseJSON here...
+      thisJson = responseJSON
+      for (let item in responseJSON) {
+        setCardInPlane(responseJSON[item].timeToStart,responseJSON[item].moisture,responseJSON[item].duration,responseJSON[item].relayId,item)
+      }
+  });
+  }
+
+
+  const addTest = () => {
+    getData()
+    
+  }
+  const delTest = () => {
+    window.location.reload(false);
+    
+  }
+
+  const delData = (int) => {
+    console.log(thisJson[int])
+    fetch("http://localhost:8080/api/SetSoilMoisture/SoilMoistureByContext" , {method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          timeToStart: thisJson[int].timeToStart,
+          moisture: thisJson[int].moisture,
+          duration: thisJson[int].duration,
+          relayId: thisJson[int].relayId,
+          user: thisJson[int].user
+        })})
+    .then((response) => {
+      if (response.ok == true) {
+        window.location.reload(false);
+      }else {
+        alert("Failed to delete, try again later")
+      }
+    });
+    
+
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <>
       <div className="bg-soil">
@@ -39,37 +125,14 @@ function SoilHumid() {
                 </tr>
               </thead>
               <tbody id="cases-soilhumid">
-                <tr>
-                  <td>08:30 AM</td>
-                  <td>40 %RH</td>
-                  <td>12</td>
-                  <td>1</td>
-                  <td>
-                    <a href="">ลบ</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>09:90 AM</td>
-                  <td>601 %RH</td>
-                  <td>1020</td>
-                  <td>911</td>
-                  <td>
-                    <a href="">ลบ</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>07:80 AM</td>
-                  <td>41 %RH</td>
-                  <td>1</td>
-                  <td>100</td>
-                  <td>
-                    <a href="">ลบ</a>
-                  </td>
-                </tr>
               </tbody>
             </Table>
           </Row>
         </Container>
+        {/* <div id="cardplane" className="cardplane">           
+                  <button onClick={addTest}> Add button </button> 
+                  <button onClick={delTest}> Del button </button> 
+          </div> */}
       </div>
     </>
   )

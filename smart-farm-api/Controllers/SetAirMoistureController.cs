@@ -80,7 +80,7 @@ public class SetAirMoistureController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("SoilMoistureByContext")]
+    [HttpDelete("AirMoistureByContext")]
     public async Task<IActionResult> DeleteByContext(SetAirMoisture setting)
     {
         var node = await _setAirMoistureService.GetSetAirMoistureByContextAsync(setting);
