@@ -30,7 +30,7 @@ function Login() {
         localStorage.setItem('username', username)
         window.location.href = '../main'
       } else {
-        alert('Password KUY')
+        alert('Username or Password Wrong')
       }
     })
   }

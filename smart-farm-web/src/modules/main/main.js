@@ -32,6 +32,7 @@ function Main() {
         document.getElementById(`switch${item.id}`).setAttribute('alt', 'off')
       }
       console.log(item)
+      console.log(username)
     }
   }
 

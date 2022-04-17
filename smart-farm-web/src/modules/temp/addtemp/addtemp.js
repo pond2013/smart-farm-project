@@ -3,13 +3,38 @@ import './addtemp.scss'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
-function addTemp() {
-  // const [temp, setTemp] = useState('');
-  // const [work, setWork] = useState('');
+function AddTemp() {
+  const [temp, setTemp] = useState('')
+  const [work, setWork] = useState('')
+  const username = localStorage.getItem('username');
   let history = new useHistory()
 
-  const saveClickk = async e =>  {
-    e.preventDefault();
+  const postUser = () => {
+    (async () => {
+        const rawResponse = await fetch('http://localhost:8080/api/SetTemp', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            {
+              id:"",
+              tempToStart: temp,
+              duration: work,
+              relayId: "1",
+              user: username
+            })
+        });
+        
+      })();
+    }
+
+  const saveClickk = async (e) => {
+    postUser();
+    console.log(temp)
+    console.log(work)
+    e.preventDefault()
     history.push('../temp')
   }
 
@@ -25,11 +50,27 @@ function addTemp() {
               <Row className="m-2 p-2">
                 <Row className="p-1">
                   <p>อุณหภูมิ (℃)</p>
-                  {/* <input type="number" placeholder="0" onChange={(e) => {setTemp(e.target.value)}}></input> */}
+                  <input
+                    type="number"
+                    id="temp"
+                    name="temp"
+                    placeholder="0"
+                    onChange={(e) => {
+                      setTemp(e.target.value)
+                    }}
+                  ></input>
                 </Row>
                 <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
-                  {/* <input type="number" placeholder="0" onChange={(e) => {setWork(e.target.value)}}></input> */}
+                  <input
+                    type="number"
+                    id="work"
+                    name="work"
+                    placeholder="0"
+                    onChange={(e) => {
+                      setWork(e.target.value)
+                    }}
+                  ></input>
                 </Row>
               </Row>
             </div>
@@ -48,4 +89,4 @@ function addTemp() {
     </>
   )
 }
-export default addTemp
+export default AddTemp
