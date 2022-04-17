@@ -38,6 +38,17 @@ public class RelayController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newNode.Id }, newNode);
     }
 
+    [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<RelayNode> ListNode)
+    {
+        foreach (RelayNode item in ListNode) {
+            await _relayService.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
+    }
+
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, RelayNode updatedNode)
     {

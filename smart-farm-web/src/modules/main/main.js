@@ -13,6 +13,8 @@ function Main() {
   }, [])
 
   const [checked, setChecked] = useState(false)
+  const username = localStorage.getItem('username');
+  
   let list = [
     { id: '1', state: 'on' },
     { id: '2', state: 'off' },

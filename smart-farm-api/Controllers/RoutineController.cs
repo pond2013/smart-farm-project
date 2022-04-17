@@ -37,6 +37,16 @@ public class RoutineController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = p.Id }, p);
     }
 
+    [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<Routine> ListRoutine)
+    {
+        foreach (Routine item in ListRoutine) {
+            await _routineService.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
+    }
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, Routine update)
     {

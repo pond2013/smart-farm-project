@@ -26,7 +26,8 @@ public class RelayService
 
     public async Task<RelayNode?> GetAsync(string id) =>
         await _nodesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
+    public async Task<RelayNode?> GetRelayNodeByIdAsync(string relayId) =>
+        await _nodesCollection.Find(x => x.relayId == relayId).FirstOrDefaultAsync();
     public async Task CreateAsync(RelayNode newNode) =>
         await _nodesCollection.InsertOneAsync(newNode);
 

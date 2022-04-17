@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './addtime.scss'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function addTime() {
   let history = new useHistory()
+  
   function saveClickk() {
     history.push('../time')
   }
@@ -21,15 +22,24 @@ function addTime() {
               <Row className="m-2 p-2">
                 <Row className="p-1">
                   <p>วัน</p>
-                  <input type="date"></input>
+                  <input
+                    type="date"           
+                  ></input>
                 </Row>
                 <Row className="p-1">
                   <p>เริ่มทำงาน</p>
-                  <input type="time"></input>
+                  <input
+                    type="time"
+                    
+                  ></input>
                 </Row>
                 <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
-                  <input type="number" placeholder="0"></input>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    
+                  ></input>
                 </Row>
                 <Row className="p-1">
                   <p>รีเลย์</p>
@@ -39,6 +49,7 @@ function addTime() {
                       type="checkbox"
                       id="relay1"
                       name="relay1"
+                      
                     ></input>
                     <label for="relay1">รีเลย์ 1</label>
                   </Col>

@@ -37,6 +37,17 @@ public class SetAirMoistureController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = moisture.Id }, moisture);
     }
 
+        [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<SetAirMoisture> ListAirMoisture)
+    {
+        foreach (SetAirMoisture item in ListAirMoisture) {
+            await _setAirMoistureService.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
+    }
+
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, SetAirMoisture updateMoisture)
     {
@@ -66,6 +77,22 @@ public class SetAirMoistureController : ControllerBase
 
         await _setAirMoistureService.RemoveAsync(id);
 
+        return NoContent();
+    }
+
+    [HttpDelete("SoilMoistureByContext")]
+    public async Task<IActionResult> DeleteByContext(SetAirMoisture setting)
+    {
+        var node = await _setAirMoistureService.GetSetAirMoistureByContextAsync(setting);
+
+        if (node is not null)
+        {
+            if (node.Id is not null){
+            await _setAirMoistureService.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
         return NoContent();
     }
 }

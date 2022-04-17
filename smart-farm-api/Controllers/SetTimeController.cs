@@ -29,12 +29,24 @@ public class SetTimeController : ControllerBase
 
         return node;
     }
-     [HttpPost]
+    
+    [HttpPost]
     public async Task<IActionResult> Post(SetTime timer)
     {
         await _setTime.CreateAsync(timer);
 
         return CreatedAtAction(nameof(Get), new { id = timer.Id }, timer);
+    }
+
+    [HttpPost("ByList")]
+    public async Task<IActionResult> PostList(List<SetTime> ListTimer)
+    {
+        foreach (SetTime item in ListTimer) {
+            await _setTime.CreateAsync(item);
+            CreatedAtAction(nameof(Get), new { id = item.Id }, item);
+        }
+
+        return Ok();
     }
 
     [HttpPut("{id:length(24)}")]
@@ -66,6 +78,37 @@ public class SetTimeController : ControllerBase
 
         await _setTime.RemoveAsync(id);
 
+        return NoContent();
+    }
+
+    [HttpDelete("RelayByContext")]
+        public async Task<IActionResult> DeleteByContext(SetTime setting)
+    {
+        var node = await _setTime.GetSetTimeByContextAsync(setting);
+
+        if (node is not null)
+        {
+            if (node.Id is not null){
+            await _setTime.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
+        return NoContent();
+    }
+    [HttpDelete("RelayByUser/{relayId}/{username}")]
+        public async Task<IActionResult> DeleteByUsernameAndRelayID(string relayId,string username)
+    {
+        var node = await _setTime.GetSetTimeByUsernameAndIdAsync(username,relayId);
+
+        if (node is not null)
+        {
+            if (node.Id is not null) {
+            await _setTime.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
         return NoContent();
     }
 }

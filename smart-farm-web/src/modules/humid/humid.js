@@ -33,13 +33,12 @@ const postUser = () => {
         body: JSON.stringify(
           {
             id: "",
-            pid: 343766, 
             name: "Inazuma", 
             Email: "https://nxxxxxx.net/g/383661/",
             Password: "SweetTeaMonster"
           })
       });
-      const content = await rawResponse.json();
+      const content = await rawResponse;
     
       console.log(content);
     })();
@@ -55,6 +54,14 @@ const postUser = () => {
       });
       
     }
+
+    const deleteUser= () => {
+      console.log("Delete Testing : ")
+      fetch("http://localhost:8080/api/User/By/Inazuma" , {method: 'DELETE'})
+        .then((response) => console.log(response));
+        
+
+      }
   return (
     <>
       <div className="bg-humid">
@@ -117,6 +124,7 @@ const postUser = () => {
           </Row>
           <button onClick={getUser}> GET ME </button>
           <button onClick={postUser}> POST ME </button>
+          <button onClick={deleteUser}> DELETE ME </button>
           <button onClick={randomNum}> RANDOM ME </button>
         </Container>
       </div>

@@ -12,5 +12,6 @@ public class SetTime
     public string? timeToStart { get; set; }
     public string? duration { get; set; }
     public string? relayId { get; set; }
+    public string? user { get; set; }
     
 }

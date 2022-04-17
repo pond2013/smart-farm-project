@@ -27,6 +27,15 @@ public class SetTempService
     public async Task<SetTemp?> GetAsync(string id) =>
         await _setTempCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+    public async Task<SetTemp?> GetSetTempByIdAsync(string relayId) =>
+        await _setTempCollection.Find(x => x.relayId == relayId).FirstOrDefaultAsync();
+
+    public async Task<SetTemp?> GetSetTempByUsernameAndIdAsync(string username,string relayId) =>
+        await _setTempCollection.Find(x => (x.relayId == relayId) && (x.user == username)).FirstOrDefaultAsync();
+
+    public async Task<SetTemp?> GetSetTempByContextAsync(SetTemp setting) =>
+        await _setTempCollection.Find(x => ((x.tempToStart == setting.tempToStart) && (x.duration == setting.duration) 
+                                            && (x.relayId == setting.relayId) && (x.user == setting.user))).FirstOrDefaultAsync();   
     public async Task CreateAsync(SetTemp newTemp) =>
         await _setTempCollection.InsertOneAsync(newTemp);
 

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './addtemp.scss'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function addTemp() {
+  // const [temp, setTemp] = useState('');
+  // const [work, setWork] = useState('');
   let history = new useHistory()
-  function saveClickk() {
+
+  const saveClickk = async e =>  {
+    e.preventDefault();
     history.push('../temp')
   }
 
@@ -21,11 +25,11 @@ function addTemp() {
               <Row className="m-2 p-2">
                 <Row className="p-1">
                   <p>อุณหภูมิ (℃)</p>
-                  <input type="number" placeholder="0"></input>
+                  {/* <input type="number" placeholder="0" onChange={(e) => {setTemp(e.target.value)}}></input> */}
                 </Row>
                 <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
-                  <input type="number" placeholder="0"></input>
+                  {/* <input type="number" placeholder="0" onChange={(e) => {setWork(e.target.value)}}></input> */}
                 </Row>
               </Row>
             </div>
