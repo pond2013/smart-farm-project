@@ -79,4 +79,20 @@ public class SetSoilMoistureController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpDelete("SoilMoistureByContext")]
+    public async Task<IActionResult> DeleteByContext(SetSoilMoisture setting)
+    {
+        var node = await _setSoilMoistureService.GetSetSoilMoistureByContextAsync(setting);
+
+        if (node is not null)
+        {
+            if (node.Id is not null){
+            await _setSoilMoistureService.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
+        return NoContent();
+    }
 }

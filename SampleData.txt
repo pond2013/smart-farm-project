@@ -193,14 +193,43 @@ Use: POST on each API
 }
 ]
 /////////////////Set Time//////////////////////////
+[
 {
   "id": "",
   "ddmmyy": "current date damn it",
   "timeToStart": "start what",
   "duration": "for what",
-  "relayId": "69"
+  "relayId": "69",
+  "user": "string"
+} 
+,
+{
+  "id": "",
+  "ddmmyy": "Someday",
+  "timeToStart": "Sometime",
+  "duration": "Thislong",
+  "relayId": "1",
+  "user": "Punnarut"
+},
+{
+  "id": "",
+  "ddmmyy": "Someday",
+  "timeToStart": "Sometime",
+  "duration": "Thislong",
+  "relayId": "1",
+  "user": "What"
+}
+,
+{
+  "id": "",
+  "ddmmyy": "Someday",
+  "timeToStart": "Sometime",
+  "duration": "Thislong",
+  "relayId": "1",
+  "user": "Watt"
 }
 
+]
 
 /////////////////User//////////////////////////
 [

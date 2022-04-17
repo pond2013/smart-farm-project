@@ -79,4 +79,20 @@ public class SetTempController : ControllerBase
 
         return NoContent();
     }
+
+        [HttpDelete("TempByContext")]
+        public async Task<IActionResult> DeleteByContext(SetTemp setting)
+    {
+        var node = await _setTemp.GetSetTempByContextAsync(setting);
+
+        if (node is not null)
+        {
+            if (node.Id is not null){
+            await _setTemp.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
+        return NoContent();
+    }
 }

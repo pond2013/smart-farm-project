@@ -26,6 +26,15 @@ public class SetSoilMoistureService
 
     public async Task<SetSoilMoisture?> GetAsync(string id) =>
         await _setSoilMoistureCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+    public async Task<SetSoilMoisture?> GetSetSoilMoistureByIdAsync(string relayId) =>
+        await _setSoilMoistureCollection.Find(x => x.relayId == relayId).FirstOrDefaultAsync();
+
+    public async Task<SetSoilMoisture?> GetSetSoilMoistureByUsernameAndIdAsync(string username,string relayId) =>
+        await _setSoilMoistureCollection.Find(x => (x.relayId == relayId) && (x.user == username)).FirstOrDefaultAsync();
+    
+    public async Task<SetSoilMoisture?> GetSetSoilMoistureByContextAsync(SetSoilMoisture setting) =>
+        await _setSoilMoistureCollection.Find(x => ((x.moisture == setting.moisture) && (x.duration == setting.duration) 
+                                            && (x.relayId == setting.relayId) && (x.user == setting.user))).FirstOrDefaultAsync();   
 
     public async Task CreateAsync(SetSoilMoisture newMoisture) =>
         await _setSoilMoistureCollection.InsertOneAsync(newMoisture);

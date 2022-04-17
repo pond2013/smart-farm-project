@@ -60,9 +60,9 @@ public class UserController : ControllerBase
 
             if (newUser.Name == user?.Name) {
                 return Problem("There is more user");
-            }
-
-            else {
+            } else if (newUser.Name == "" || newUser.Password == "") {
+                return Problem("Bad Name or password");
+            } else {
                 await _userService.CreateAsync(newUser);
                 CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
                 return Ok();

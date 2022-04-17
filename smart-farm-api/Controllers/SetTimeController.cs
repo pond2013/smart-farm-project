@@ -80,4 +80,35 @@ public class SetTimeController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpDelete("RelayByContext")]
+        public async Task<IActionResult> DeleteByContext(SetTime setting)
+    {
+        var node = await _setTime.GetSetTimeByContextAsync(setting);
+
+        if (node is not null)
+        {
+            if (node.Id is not null){
+            await _setTime.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
+        return NoContent();
+    }
+    [HttpDelete("RelayByUser/{relayId}/{username}")]
+        public async Task<IActionResult> DeleteByUsernameAndRelayID(string relayId,string username)
+    {
+        var node = await _setTime.GetSetTimeByUsernameAndIdAsync(username,relayId);
+
+        if (node is not null)
+        {
+            if (node.Id is not null) {
+            await _setTime.RemoveAsync(node.Id);
+            }
+        } else {
+            return NotFound();
+        }
+        return NoContent();
+    }
 }
