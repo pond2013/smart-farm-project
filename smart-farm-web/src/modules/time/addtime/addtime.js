@@ -3,11 +3,51 @@ import './addtime.scss'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
-function addTime() {
+function AddTime() {
   let history = new useHistory()
-  
-  function saveClickk() {
-    history.push('../time')
+  const [date, setDate] = useState('')
+  const [timeStart, setTimeStart] = useState('')
+  const [work, setWork] = useState('')
+  const [relay, setRelay] = useState([])
+  const username = localStorage.getItem('username')
+
+  const postUser = () => {
+    ;(async () => {
+      for(let i in relay){
+      const rawResponse = await fetch(
+        'http://localhost:8080/api/SetTime/ByList',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(          
+            [
+            {
+              id: '',
+              ddmmyy: date,
+              timeToStart: timeStart,
+              duration: work,
+              relayId: relay[i],
+              user: username
+            },     
+            ]
+            ),
+        },
+      )
+    }})()
+  }
+
+  function saveClickk(e) {
+    e.preventDefault()
+    postUser()
+    console.log(date)
+    console.log(timeStart)
+    console.log(work)
+    console.log(relay)
+
+    // history.push('../time')
   }
 
   return (
@@ -23,22 +63,32 @@ function addTime() {
                 <Row className="p-1">
                   <p>วัน</p>
                   <input
-                    type="date"           
+                    type="date"
+                    id="date"
+                    onChange={(e) => {
+                      setDate(e.target.value)
+                    }}
                   ></input>
                 </Row>
                 <Row className="p-1">
                   <p>เริ่มทำงาน</p>
                   <input
                     type="time"
-                    
+                    id="timeStart"
+                    onChange={(e) => {
+                      setTimeStart(e.target.value)
+                    }}
                   ></input>
                 </Row>
                 <Row className="p-1">
                   <p>ทำงาน (นาที)</p>
                   <input
                     type="number"
+                    id="work"
                     placeholder="0"
-                    
+                    onChange={(e) => {
+                      setWork(e.target.value)
+                    }}
                   ></input>
                 </Row>
                 <Row className="p-1">
@@ -49,7 +99,9 @@ function addTime() {
                       type="checkbox"
                       id="relay1"
                       name="relay1"
-                      
+                      onChange={(e) => {
+                        setRelay((list) => [...list, '1'])
+                      }}
                     ></input>
                     <label for="relay1">รีเลย์ 1</label>
                   </Col>
@@ -59,6 +111,9 @@ function addTime() {
                       type="checkbox"
                       id="relay2"
                       name="relay2"
+                      onChange={(e) => {
+                        setRelay((list) => [...list, '2'])
+                      }}
                     ></input>
                     <label for="relay2">รีเลย์ 2</label>
                   </Col>
@@ -68,6 +123,9 @@ function addTime() {
                       type="checkbox"
                       id="relay3"
                       name="relay3"
+                      onChange={(e) => {
+                        setRelay((list) => [...list, '3'])
+                      }}
                     ></input>
                     <label for="relay3">รีเลย์ 3</label>
                   </Col>
@@ -77,6 +135,9 @@ function addTime() {
                       type="checkbox"
                       id="relay4"
                       name="relay4"
+                      onChange={(e) => {
+                        setRelay((list) => [...list, '4'])
+                      }}
                     ></input>
                     <label for="relay4">รีเลย์ 4</label>
                   </Col>
@@ -98,4 +159,4 @@ function addTime() {
     </>
   )
 }
-export default addTime
+export default AddTime

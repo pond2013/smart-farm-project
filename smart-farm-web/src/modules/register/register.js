@@ -7,7 +7,7 @@ import { Row, Col } from 'react-bootstrap'
 function Register() {
 
   const [email, setEmail] = useState('');
-  const [username,setUsername]=useState('');
+  const [username,setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
 
