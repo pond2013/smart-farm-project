@@ -33,18 +33,7 @@
 tbody, td{
     text-align: center;
     font-size: 20px;
-
 }
-tbody tr td a:link{
-    color: #41A8E2;
-    background-color: transparent;
-    text-decoration: none;
-}
-tbody tr td a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: underline;
-  }
 #cases-temp tr:nth-child(even) {
     font-weight: bold;
     background-color: #F0F8FF;
@@ -54,3 +43,8 @@ tbody tr td a:hover {
     background-color: #F8F8F8;
 }
 
+.delete-button {
+    color: #fa0828;
+    text-decoration: underline;
+    cursor: pointer;
+}

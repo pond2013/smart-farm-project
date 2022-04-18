@@ -9,45 +9,45 @@ function AddTime() {
   const [timeStart, setTimeStart] = useState('')
   const [work, setWork] = useState('')
   const [relay, setRelay] = useState([])
+  const [isChecked, setIsChecked] = useState(true)
   const username = localStorage.getItem('username')
 
   const postUser = () => {
     ;(async () => {
-      for(let i in relay){
-      const rawResponse = await fetch(
-        'http://localhost:8080/api/SetTime/ByList',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+      for (let item in relay) {
+        const rawResponse = await fetch(
+          'http://localhost:8080/api/SetTime/ByList',
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify([
+              {
+                id: '',
+                ddmmyy: date,
+                timeToStart: timeStart,
+                duration: work,
+                relayId: relay[item],
+                user: username,
+              },
+            ]),
           },
-          body: JSON.stringify(          
-            [
-            {
-              id: '',
-              ddmmyy: date,
-              timeToStart: timeStart,
-              duration: work,
-              relayId: relay[i],
-              user: username
-            },     
-            ]
-            ),
-        },
-      )
-    }})()
+        )
+      }
+    })()
   }
 
   function saveClickk(e) {
     e.preventDefault()
-    postUser()
-    console.log(date)
-    console.log(timeStart)
-    console.log(work)
-    console.log(relay)
-
-    // history.push('../time')
+    if (date != '' && timeStart != '' && work != '' && relay.length != 0) {
+      postUser()
+      console.log(relay)
+      //history.push('../time')
+    } else {
+      alert('Invalid or Incomplete')
+    }
   }
 
   return (
@@ -100,8 +100,13 @@ function AddTime() {
                       id="relay1"
                       name="relay1"
                       onChange={(e) => {
-                        setRelay((list) => [...list, '1'])
+                        if (e.target.checked == true) {
+                          setRelay((list) => [...list, '1'])
+                        } else {
+                          relay.splice(relay.indexOf('1', 1))
+                        }
                       }}
+                      onClick={() => setIsChecked(!isChecked)}
                     ></input>
                     <label for="relay1">รีเลย์ 1</label>
                   </Col>
@@ -112,8 +117,13 @@ function AddTime() {
                       id="relay2"
                       name="relay2"
                       onChange={(e) => {
-                        setRelay((list) => [...list, '2'])
+                        if (e.target.checked == true) {
+                          setRelay((list) => [...list, '2'])
+                        } else {
+                          relay.splice(relay.indexOf('2', 1))
+                        }
                       }}
+                      onClick={() => setIsChecked(!isChecked)}
                     ></input>
                     <label for="relay2">รีเลย์ 2</label>
                   </Col>
@@ -124,8 +134,13 @@ function AddTime() {
                       id="relay3"
                       name="relay3"
                       onChange={(e) => {
-                        setRelay((list) => [...list, '3'])
+                        if (e.target.checked == true) {
+                          setRelay((list) => [...list, '3'])
+                        } else {
+                          relay.splice(relay.indexOf('3', 1))
+                        }
                       }}
+                      onClick={() => setIsChecked(!isChecked)}
                     ></input>
                     <label for="relay3">รีเลย์ 3</label>
                   </Col>
@@ -136,8 +151,13 @@ function AddTime() {
                       id="relay4"
                       name="relay4"
                       onChange={(e) => {
-                        setRelay((list) => [...list, '4'])
+                        if (e.target.checked == true) {
+                          setRelay((list) => [...list, '4'])
+                        } else {
+                          relay.splice(relay.indexOf('4', 1))
+                        }
                       }}
+                      onClick={() => setIsChecked(!isChecked)}
                     ></input>
                     <label for="relay4">รีเลย์ 4</label>
                   </Col>

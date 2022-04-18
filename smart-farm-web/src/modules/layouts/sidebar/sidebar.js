@@ -1,13 +1,14 @@
-import './sidebar.scss';
-import React, { useState} from 'react'
-import { useHistory, withRouter } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import menuSidebar from '../../../constant/menu-sidebar';
+import './sidebar.scss'
+import React, { useState } from 'react'
+import { useHistory, withRouter } from 'react-router-dom'
+import { Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import menuSidebar from '../../../constant/menu-sidebar'
+import { FaSignOutAlt } from 'react-icons/fa'
 
 function Sidebar() {
-  const history = useHistory();
-  const pathname = history.location.pathname;
+  const history = useHistory()
+  const pathname = history.location.pathname
   const menu = menuSidebar
 
   return (
@@ -18,7 +19,8 @@ function Sidebar() {
             className={`nav-link ${
               pathname.indexOf(menuSidebar.pageName) !== -1 ? 'active' : ''
             }`}
-            to={`${menuSidebar.path}`}>
+            to={`${menuSidebar.path}`}
+          >
             <div className="d-flex">
               <h4>{menuSidebar.icon}</h4>
               <span className="d-none d-md-block p-1">{menuSidebar.title}</span>
@@ -26,8 +28,18 @@ function Sidebar() {
           </Link>
         </Nav.Item>
       ))}
+      <Nav.Item onClick={() => localStorage.clear()}>
+        <Link className="nav-link" to="/login">
+          <div className="d-flex">
+            <h4>
+              <FaSignOutAlt />
+            </h4>
+            <span className="d-none d-md-block p-1">ออกจากระบบ</span>
+          </div>
+        </Link>
+      </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 export default withRouter(Sidebar)
