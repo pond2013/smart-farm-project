@@ -1,50 +1,115 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './main.scss'
 import temp from '../../assets/img/temp-icon.png'
 import humid from '../../assets/img/humid-icon.png'
 import wind from '../../assets/img/wind-icon.png'
 import off from '../../assets/img/OFF.png'
 import on from '../../assets/img/ON.png'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Container } from 'react-bootstrap'
 
 function Main() {
   useEffect(() => {
-    setInitImg()
+    getDataRelay()
+    getTempData()
+    getAirData()
+    getSoilData()
+    getWindData()
   }, [])
 
-  const [checked, setChecked] = useState(false)
+  var thisJson
+  const [checked, setChecked] = useState(false);
   const username = localStorage.getItem('username');
-  
-  let list = [
-    { id: '1', state: 'on' },
-    { id: '2', state: 'off' },
-    { id: '3', state: 'on' },
-    { id: '4', state: 'off' },
-  ]
+  const [tempval, setTemp] = useState();
+  const [humidval, setHumid] = useState();
+  const [soilval, setSoil] = useState();
+  const [windval, setWind] = useState();
 
-  function setInitImg() {
-    for (let item of list) {
-      if (item.state == 'on') {
-        document.getElementById(`switch${item.id}`).setAttribute('src', on)
-        document.getElementById(`switch${item.id}`).setAttribute('alt', 'on')
-      } else {
-        document.getElementById(`switch${item.id}`).setAttribute('src', off)
-        document.getElementById(`switch${item.id}`).setAttribute('alt', 'off')
-      }
-      console.log(item)
-      console.log(username)
-    }
+  const getTempData = () => {
+    fetch('http://localhost:8080/api/Sample/giverandomnumber?start=20&end=42')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+          setTemp(responseJSON)
+      })
+  }
+  const getAirData = () => {
+    fetch('http://localhost:8080/api/Sample/giverandomnumber?start=30&end=80')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+          setHumid(responseJSON)
+      })
+  }
+  const getSoilData = () => {
+    fetch('http://localhost:8080/api/Sample/giverandomnumber?start=10&end=70')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+          setSoil(responseJSON)
+      })
+  }
+  const getWindData = () => {
+    fetch('http://localhost:8080/api/Sample/giverandomnumber?start=1&end=9')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+          setWind(responseJSON)
+      })
   }
 
+  const getDataRelay = () =>{
+    fetch('http://localhost:8080/api/Relay')
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+        for (let item in responseJSON) {
+          if (responseJSON[item].turnOn == true) {
+            document.getElementById(`${responseJSON[item].relayId}`).setAttribute('src', on)
+            document.getElementById(`${responseJSON[item].relayId}`).setAttribute('alt', 'on')
+          } else {
+            document.getElementById(`${responseJSON[item].relayId}`).setAttribute('src', off)
+            document.getElementById(`${responseJSON[item].relayId}`).setAttribute('alt', 'off')
+          }
+        }
+      })
+  }
+  const postUser = (event) => {
+    (async () => { 
+      let turnOn = event.alt == "on" ? true : false
+      console.log(turnOn)
+        const rawResponse = await fetch('http://localhost:8080/api/Relay', {
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            {
+              id:"",
+              relayId: event.id,
+              turnOn: turnOn,
+            })
+        });
+        
+      })();
+    }
+
   function Changeimg(e) {
-    e.preventDefault()
+    e.preventDefault() 
     if (checked == true) {
       if (e.target.alt == 'off') {
         e.target.setAttribute('src', on)
         e.target.setAttribute('alt', 'on')
+        postUser(e.target)
       } else if (e.target.alt == 'on') {
         e.target.setAttribute('src', off)
         e.target.setAttribute('alt', 'off')
+        postUser(e.target)
       }
     }
   }
@@ -61,7 +126,7 @@ function Main() {
                 </div>
               </Row>
               <Row className="m-2 mt-4">
-                <p>24 ℃</p>
+                <p>{tempval} ℃</p>
               </Row>
               <Row>
                 <p>อุณหภูมิ</p>
@@ -75,7 +140,7 @@ function Main() {
                 </div>
               </Row>
               <Row className="m-2 mt-4">
-                <p>100 %</p>
+                <p>{humidval} %</p>
               </Row>
               <Row>
                 <p>ความชื้นดิน</p>
@@ -89,7 +154,7 @@ function Main() {
                 </div>
               </Row>
               <Row className="m-2 mt-4">
-                <p>100 %</p>
+                <p>{soilval} %</p>
               </Row>
               <Row>
                 <p>ความชื้น</p>
@@ -103,7 +168,7 @@ function Main() {
                 </div>
               </Row>
               <Row className="m-2 mt-4">
-                <p>0 m/s</p>
+                <p>{windval} m/s</p>
               </Row>
               <Row>
                 <p>ความเร็วลม</p>
@@ -134,7 +199,7 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      id="switch1"
+                      id="1"
                       onClick={Changeimg}
                     />
                   </div>
@@ -147,7 +212,7 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      id="switch2"
+                      id="2"
                       onClick={Changeimg}
                     />
                   </div>
@@ -160,7 +225,7 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      id="switch3"
+                      id="3"
                       onClick={Changeimg}
                     />
                   </div>
@@ -173,7 +238,7 @@ function Main() {
                   <div className="d-flex justify-content-center">
                     <img
                       className="img-logoswitch"
-                      id="switch4"
+                      id="4"
                       onClick={Changeimg}
                     />
                   </div>

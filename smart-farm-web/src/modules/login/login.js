@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './login.scss'
-import logo from '../../assets/img/kkm.png'
+import logo from '../../assets/img/logo1.png'
 import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 

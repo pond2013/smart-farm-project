@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './register.scss'
-import img from '../../assets/img/11.jpg'
+import img from '../../assets/img/kkuregis.jpg'
 import { useHistory } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 
