@@ -99,6 +99,28 @@ public class UserController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("ByUsername/{username}")]
+    public async Task<IActionResult> UpdateByUsername(string username, User updatedUser)
+    {
+        var user = await _userService.GetUsernameAsync(username);
+
+        if (user is null)
+        {
+            return NotFound();
+        }
+
+        updatedUser.Id = user.Id;
+
+          if (user.Id is not null)
+        {
+            await _userService.UpdateAsync(user.Id, updatedUser);
+        } else {
+            return BadRequest();
+        }
+        
+        return NoContent();
+    }
+
     [HttpPut("password/{id}/{password}")]
     public async Task<IActionResult> UpdatePassword(string id,string password)
     {
