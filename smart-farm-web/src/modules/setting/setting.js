@@ -7,7 +7,8 @@ function Setting() {
   useEffect(() => {
     setInitPln()
   }, [])
-
+  
+  let history = new useHistory();
   const [plant, setPlant] = useState('')
   const [board, setBoard] = useState('')
   const plantGet = localStorage.getItem('plant')
