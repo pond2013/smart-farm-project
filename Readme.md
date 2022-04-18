@@ -45,10 +45,16 @@ Open: http://localhost:8080/swagger/index.html
 Use: POST on each API
 ```
 
-## Run Kubernetes cluster
+## Run Kubernetes cluster in minikube
 ```bash
 cd kube-deploy
-kubectl create cluster -f .
+minikube start --driver=docker
+kubectl apply -f .
+kubectl get deployment
+kubectl get service
+kubectl get pods
+minikube dashboard
+minikube stop
 ```
 
 ## Delete Kubernetes cluster and clear docker cache
