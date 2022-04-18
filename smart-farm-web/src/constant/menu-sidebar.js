@@ -1,4 +1,4 @@
-import { RiHome8Line, RiSettings5Line, RiLineChartLine, RiTimeLine, RiTempHotLine, RiShowersLine, RiDropLine} from 'react-icons/ri';
+import { RiHome8Line, RiSettings5Line, RiLineChartLine, RiTimeLine, RiTempHotLine, RiShowersLine, RiDropLine, RiContactsBook2Fill} from 'react-icons/ri';
 
 const menuSidebar = [
     {
@@ -42,6 +42,12 @@ const menuSidebar = [
       icon: <RiSettings5Line />,
       path: '/setting',
       pageName:'setting'
+    },
+    {
+      title: 'ตั้งค่าโปรไฟล์',
+      icon: <RiContactsBook2Fill />,
+      path: '/profile-setting',
+      pageName:'profile'
     },
   ];
   export default menuSidebar;

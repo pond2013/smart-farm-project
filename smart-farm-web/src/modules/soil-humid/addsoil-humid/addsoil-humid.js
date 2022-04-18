@@ -25,7 +25,7 @@ function AddSoilHumid() {
             timeToStart: timeStart,
             moisture: soil,
             duration: work,
-            relayId: '4',
+            relayId: '2',
             user: username,
           }),
         },
@@ -34,9 +34,13 @@ function AddSoilHumid() {
   }
 
   function saveClickk(e) {
-    postUser()
-    console.log('sus')
-    //history.push('../soilHumid')
+    e.preventDefault()
+    if (timeStart != '' && soil != '' && work != '') {
+      postUser()
+      history.push('../soilhumid')
+    } else {
+      alert('Invalid or Incomplete')
+    }
   }
 
   return (

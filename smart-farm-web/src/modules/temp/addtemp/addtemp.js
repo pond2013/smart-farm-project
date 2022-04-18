@@ -31,11 +31,13 @@ function AddTemp() {
     }
 
   const saveClickk = async (e) => {
-    postUser();
-    console.log(temp)
-    console.log(work)
     e.preventDefault()
-    history.push('../temp')
+    if (temp != '' && work != '') {
+      postUser()
+      history.push('../temp')
+    } else {
+      alert('Invalid or Incomplete')
+    }
   }
 
   return (

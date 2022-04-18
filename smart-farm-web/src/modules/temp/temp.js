@@ -1,15 +1,80 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './temp.scss'
 import Table from 'react-bootstrap/Table'
 import { useHistory} from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
-import {useEffect} from 'react'
+
 
 function Temp() {
+  useEffect(() => {
+    getData()
+  }, [])
+  const username = localStorage.getItem('username')
+  var thisJson
   let history = new useHistory();
   function AddClick() {
     history.push('/addtemp')
   }
+  function setCardInPlane(temptoStart, duration, relayId, row) {
+    var tbody = document.getElementById('cases-temp')
+    var tr = document.createElement('tr')
+    var td1 = document.createElement('td')
+    var td2 = document.createElement('td')
+    var td3 = document.createElement('td')
+    var td4 = document.createElement('td')
+    var delButton = document.createElement('a')
+    delButton.className = 'delete-button'
+    td1.textContent = temptoStart
+    td2.textContent = duration
+    td3.textContent = relayId
+    delButton.textContent = 'ลบ'
+    td4.appendChild(delButton)
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    tbody.appendChild(tr)
+    tr.id = 'row' + row
+    tr.value = row
+    delButton.addEventListener('click', (e) => {
+      delData(e.target.parentElement.parentElement.value)
+    })
+  }
+  const getData = () => {
+    fetch("http://localhost:8080/api/SetTemp")
+    .then((response) => response.json())
+    .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+        for (let item in responseJSON) {
+          if(responseJSON[item].user == username){
+            setCardInPlane(responseJSON[item].tempToStart,responseJSON[item].duration,responseJSON[item].relayId,item)
+          }
+        }
+    });
+    }
+    const delData = (int) => {
+      console.log(thisJson[int])
+      fetch("http://localhost:8080/api/SetTemp/TempByContext" , {method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            tempToStart: thisJson[int].tempToStart,
+            duration: thisJson[int].duration,
+            relayId: thisJson[int].relayId,
+            user: thisJson[int].user
+          })})
+      .then((response) => {
+        if (response.ok == true) {
+          window.location.reload(false);
+        }else {
+          alert("Failed to delete, try again later")
+        }
+      });
+    }
 
   return (
     <>
@@ -43,30 +108,6 @@ function Temp() {
                 </tr>
               </thead>
               <tbody id="cases-temp">
-                <tr>
-                  <td>25 ℃</td>
-                  <td>40</td>
-                  <td>1</td>
-                  <td>
-                    <a href=''>ลบ</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>28 ℃</td>
-                  <td>20</td>
-                  <td>3</td>
-                  <td>
-                    <a href=''>ลบ</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>23 ℃</td>
-                  <td>50</td>
-                  <td>5</td>
-                  <td>
-                    <a href=''>ลบ</a>
-                  </td>
-                </tr>
               </tbody>
             </Table>
           </Row>

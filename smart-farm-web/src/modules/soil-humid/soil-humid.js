@@ -1,19 +1,20 @@
-import React , {useRef , useEffect} from 'react'
+import React , { useEffect } from 'react'
 import './soil-humid.scss'
 import Table from 'react-bootstrap/Table'
 import { useHistory } from 'react-router-dom'
 import { Row, Col, Container } from 'react-bootstrap'
 
 function SoilHumid() {
+  useEffect(() => {
+    getData()
+  }, [])
 
   let history = new useHistory()
-  const cardplane = useRef(null)
+  const username = localStorage.getItem('username')
   var thisJson
   function AddClick() {
     history.push('/addsoilHumid')
   }
-
-
 
   function setCardInPlane(timetoStart, moisture, duration, relayId, row) {
     var tbody = document.getElementById("cases-soilhumid");
@@ -23,7 +24,8 @@ function SoilHumid() {
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
-    var delButton = document.createElement("button")
+    var delButton = document.createElement("a")
+    delButton.className = 'delete-button'
     td1.textContent = timetoStart
     td2.textContent = moisture
     td3.textContent = duration
@@ -51,21 +53,13 @@ const getData = () => {
       // do stuff with responseJSON here...
       thisJson = responseJSON
       for (let item in responseJSON) {
-        setCardInPlane(responseJSON[item].timeToStart,responseJSON[item].moisture,responseJSON[item].duration,responseJSON[item].relayId,item)
+        
+        if(responseJSON[item].user == username){
+          setCardInPlane(responseJSON[item].timeToStart,responseJSON[item].moisture,responseJSON[item].duration,responseJSON[item].relayId,item)
+        }
       }
   });
   }
-
-
-  const addTest = () => {
-    getData()
-    
-  }
-  const delTest = () => {
-    window.location.reload(false);
-    
-  }
-
   const delData = (int) => {
     console.log(thisJson[int])
     fetch("http://localhost:8080/api/SetSoilMoisture/SoilMoistureByContext" , {method: 'DELETE',
@@ -89,12 +83,9 @@ const getData = () => {
       }
     });
     
-
   }
 
-  useEffect(() => {
-    getData()
-  }, [])
+  
   return (
     <>
       <div className="bg-soil">
@@ -129,10 +120,7 @@ const getData = () => {
             </Table>
           </Row>
         </Container>
-        {/* <div id="cardplane" className="cardplane">           
-                  <button onClick={addTest}> Add button </button> 
-                  <button onClick={delTest}> Del button </button> 
-          </div> */}
+        
       </div>
     </>
   )

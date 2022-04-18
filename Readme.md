@@ -38,10 +38,12 @@ docker-compose up -d
 ```
 
 ## Add sample data
+```bash
 Ref: SampleData.txt
 Run: docker-compose up --build
 Open: http://localhost:8080/swagger/index.html
 Use: POST on each API
+```
 
 ## Run Kubernetes cluster
 ```bash
@@ -61,3 +63,19 @@ docker system prune -a
 
 ## Local Frontend url
 http://localhost/home
+
+
+## Docker Swarm using Docker-Compose Example
+```bash
+docker swarm init
+sudo docker swarm join <TOKEN>
+```
+In SWARM MANAGER
+```bash
+touch docker-compose.yml
+cat > docker-compose.yml
+```
+COPY docker-compose for SWARM.yml from addtional file then
+```bash
+sudo docker stack deploy -c docker-compose.yml smart-farm-web
+```

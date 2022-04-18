@@ -1,0 +1,46 @@
+version: '3.0'
+
+services:
+  smart-farm-web:
+    image: "pondhub2013/smart-farm-web"
+    ports:
+      - 80:80
+    deploy:
+      replicas: 2
+  
+  smart-farm-api:
+    image: "pondhub2013/smart-farm-api"
+    ports:
+      - 8080:80
+    depends_on:
+      - mongo
+    deploy:
+      replicas: 2
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/db:/data/db
+      - ./backup:/backup
+    deploy:
+      replicas: 2
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongo
+    depends_on:
+      - mongo
+    deploy:
+      replicas: 2
