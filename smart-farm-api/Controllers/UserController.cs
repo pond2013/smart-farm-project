@@ -92,9 +92,9 @@ public class UserController : ControllerBase
             return NotFound();
         }
 
-        user.Id  = updatedUser.Id;
+        updatedUser.Id = user.Id;
 
-        await _userService.UpdateAsync(id, user);
+        await _userService.UpdateAsync(id, updatedUser);
 
         return NoContent();
     }
@@ -104,7 +104,6 @@ public class UserController : ControllerBase
     {
         var user = await _userService.GetAsync(id);
 
-        
 
         if (user is null)
         {

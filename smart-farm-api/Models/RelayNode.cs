@@ -11,7 +11,5 @@ public class RelayNode
 
     public string? relayId { get; set; }
     public bool TurnOn { get; set; }
-
-    public string? Date { get; set; }
     
 }
