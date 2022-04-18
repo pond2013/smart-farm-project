@@ -1,34 +1,68 @@
-import React, {useState, useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import './setting.scss'
 import { useHistory } from 'react-router-dom'
 import { Row, Container } from 'react-bootstrap'
 
 function Setting() {
   useEffect(() => {
-    setInitPln()
+    getData()
   }, [])
   
   let history = new useHistory();
-  const [plant, setPlant] = useState('')
-  const [board, setBoard] = useState('')
-  const plantGet = localStorage.getItem('plant')
-  const boardGet = localStorage.getItem('board')
+  var thisJson
+  const plant = useRef(null)
+  const node= useRef(null)
 
-  function setInitPln(){
-    document.getElementById("plantInput").value = plantGet
-    document.getElementById("boardInput").value = boardGet
-  }
+  const username = localStorage.getItem('username')
 
   function saveClickk(e){
     e.preventDefault()
-    if (plant != '' && board != '') {
-      localStorage.setItem('plant', plant)
-      localStorage.setItem('board', board)
-      history.push('../main')
+    let url = "http://localhost:8080/api/User/ByUsername/"
+    console.log(thisJson)
+    if (plant.current.value != '' && node.current.value != '') {
+      fetch(url+username , {method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            name: thisJson.name,
+            email:  thisJson.email,
+            password: thisJson.password,
+            plant: plant.current.value,
+            nodeIP: node.current.value
+          })})
+      .then((response) => {
+        if (response.ok == true) {
+          alert('Plant or Board updated Returning to main page')
+          history.push('../main')
+        }else {
+          alert('Plant or Board Update Failed')
+        }
+      });
     } else {
-      alert('Plant or Board Incomplete')
+      alert('Please fill the input')
     }
   }
+
+  const getData = () => {
+    let url = "http://localhost:8080/api/User/By/"
+    fetch(url+username)
+    .then((response) => response.json())
+    .then((responseJSON) => {
+        // do stuff with responseJSON here...
+        thisJson = responseJSON
+        console.log(thisJson)
+        if ((responseJSON.plant == null || responseJSON.plant == "" ) && (responseJSON.nodeIP == null || responseJSON.plant == "" )) {
+            alert("Please input your plant type and your node IP")
+        } else {
+            plant.current.value = responseJSON.plant
+            node.current.value = responseJSON.nodeIP
+        }
+    });
+  }
+
   return (
     <>
       <div
@@ -40,11 +74,11 @@ function Setting() {
             <div className="card-setting m-2 p-2 ">
               <Row className='p-1 '>
                 <p>ชนิดของพืข</p>
-                <input type="text" placeholder="กรุณากรอกชนิดของพืช" id="plantInput" onChange={(e) => {setPlant(e.target.value)}}></input>
+                <input type="text" placeholder="กรุณากรอกชนิดของพืช" id="plantInput" ref={plant}></input>
               </Row>
               <Row className='p-1'>
                 <p>หมายเลขบอร์ด</p>
-                <input type="text" placeholder="192.168.1.105" id="boardInput" onChange={(e) => {setBoard(e.target.value)}}></input>
+                <input type="text" placeholder="192.168.1.105" id="boardInput" ref={node}></input>
               </Row>
             </div>
           </div>

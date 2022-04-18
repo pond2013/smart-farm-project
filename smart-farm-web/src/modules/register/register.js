@@ -34,6 +34,7 @@ function Register() {
         },
       ).then((response) => {
         if (response.ok == true) {
+          localStorage.setItem('username', username)
           history.push('../main')
         } else {
           alert('Username Taken or Bad Username or Password ')

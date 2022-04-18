@@ -66,6 +66,28 @@ public class RelayController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("ByRelayId/{RelayId}")]
+    public async Task<IActionResult> UpdateByRelayId(string RelayId, RelayNode updatedNode)
+    {
+        var node = await _relayService.GetRelayNodeByIdAsync(RelayId);
+
+        if (node is null)
+        {
+            return NotFound();
+        }
+
+        updatedNode.Id = node.Id;
+
+        if (node.Id is not null) {
+            await _relayService.UpdateAsync(node.Id, updatedNode);
+        } else {
+            BadRequest();
+        }
+        return NoContent();
+    }
+
+
+
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> Delete(string id)
     {
