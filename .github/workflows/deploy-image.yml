@@ -55,8 +55,8 @@ jobs:
         uses: docker/build-push-action@v2
         id: docker_build_api
         with:
-          context: ./smart-fram-api
-          file: ./smart-fram-api/Dockerfile
+          context: ./smart-farm-api
+          file: ./smart-farm-api/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USER }}/smart-farm-api
