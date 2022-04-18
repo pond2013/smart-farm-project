@@ -43,8 +43,7 @@ function AddTime() {
     e.preventDefault()
     if (date != '' && timeStart != '' && work != '' && relay.length != 0) {
       postUser()
-      console.log(relay)
-      //history.push('../time')
+      history.push('../time')
     } else {
       alert('Invalid or Incomplete')
     }

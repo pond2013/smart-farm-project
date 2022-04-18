@@ -81,8 +81,9 @@ function Main() {
   const postUser = (event) => {
     (async () => { 
       let turnOn = event.alt == "on" ? true : false
+      let url = 'http://localhost:8080/api/Relay/ByRelayId/'
       console.log(turnOn)
-        const rawResponse = await fetch('http://localhost:8080/api/Relay', {
+        const rawResponse = await fetch(url+event.id, {
           method: 'PUT',
           headers: {
             'Accept': 'application/json',

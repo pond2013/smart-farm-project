@@ -101,7 +101,7 @@ export default function Routes() {
       {routes.map((route, i) => (
         <Route key={i} exact={route.exact} path={`${route.path}`} component={route.component} />
         ))}
-        <Redirect exact from="*" to="/home" />
+        <Redirect exact from="*" to="/login" />
     </Switch>
   );
 }

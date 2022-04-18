@@ -1,22 +1,22 @@
 const menu = [
     {
-      title: 'ตัวเลือกที่1',
+      title: 'Home',
       icon: 'icon-doc',
       path: '/home',
       value: 'menu1',
       isShow: true,
     },
     {
-      title: 'Login',
+      title: 'Graph',
       icon: 'icon-bank',
-      path: '/login',
+      path: '/graph',
       value: 'menu2',
       isShow: true,
     },
     {
-      title: 'Register',
+      title: 'profile',
       icon: 'icon-expo',
-      path: '/register',
+      path: '/profile-setting',
       value: 'menu3',
       isShow: true,
     },
@@ -41,7 +41,13 @@ const menu = [
       value: 'menu6',
       isShow: true,
     },
-    
+    {
+      title: 'Setting',
+      icon: 'icon-expo',
+      path: '/setting',
+      value: 'menu7',
+      isShow: true,
+    },
 
   ];
   export default menu;

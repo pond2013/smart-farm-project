@@ -108,7 +108,7 @@ function Time() {
             <Table responsive="sm">
               <thead className="head-table">
                 <tr>
-                  <th>วัน/เดือน/ปี</th>
+                  <th>ปี/เดือน/วัน</th>
                   <th>เวลาในการเริ่มทำงาน</th>
                   <th>ทำงาน(นาที)</th>
                   <th>รีเลย์</th>
