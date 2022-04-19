@@ -19,21 +19,16 @@ services:
 
   mongo:
     image: mongo
-    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - 27017:27017
-    volumes:
-      - ./data/db:/data/db
-      - ./backup:/backup
     deploy:
-      replicas: 2
+      replicas: 1
 
   mongo-express:
     image: mongo-express
-    restart: always
     ports:
       - 8081:8081
     environment:
@@ -43,4 +38,4 @@ services:
     depends_on:
       - mongo
     deploy:
-      replicas: 2
+      replicas: 1
