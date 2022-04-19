@@ -1,5 +1,15 @@
 # Big Boss Smart Farm
-This repository contain both front-end and back-end folder.
+This project was created for EN814774 Special Topics in Computer Software.<br />
+Within repository contain both front-end and back-end folder.<br />
+Within each folder contains dockerfile which declare the environment.<br />
+Docker-Compose was used to create the container containing services for application.
+
+## Member
+นายปัณณรุจน์ วัฒนะโกมลรุจน์ 613040159-6<br />
+นายปวเรศ นิยมเหลา 613040201-3<br />
+นายณภัทร บุญสว่าง 613040283-5<br />
+นายธีรพุทธิ์ แสงขาว 613040493-4<br />
+นางสาววีระวรรณ วุฒิเกตุ 613040566-3<br />
 
 # Installation
 
@@ -72,8 +82,12 @@ http://localhost/home
 
 
 ## Docker Swarm using Docker-Compose Example
+Create a Swarm
 ```bash
 docker swarm init
+```
+Join a Swarm
+```bash
 sudo docker swarm join <TOKEN>
 ```
 In SWARM MANAGER
